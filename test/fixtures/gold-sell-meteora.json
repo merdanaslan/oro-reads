@@ -1,0 +1,26 @@
+{
+  "signature": "3NV6q2GFkYpwa9jj8ESvQ7fDE7aj3WfPT9x7kYxCpPuuT5W9W7QvsK9mjpWpQ2efY2M3mHeTib7i5P3Bh9rdR7z1",
+  "slot": 101,
+  "timestamp": 1700003600,
+  "fee": 5500,
+  "source": "METEORA",
+  "type": "SWAP",
+  "tokenTransfers": [
+    {
+      "fromUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "toUserAccount": "8Zt83JQpWvEVn1TuqVQER1hLFU6FAbHPj2EmDR9n4SBx",
+      "tokenAmount": 0.02,
+      "mint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A"
+    },
+    {
+      "fromUserAccount": "8Zt83JQpWvEVn1TuqVQER1hLFU6FAbHPj2EmDR9n4SBx",
+      "toUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "tokenAmount": 55,
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+    }
+  ],
+  "events": {
+    "swap": {}
+  },
+  "transactionError": null
+}

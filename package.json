@@ -1,0 +1,21 @@
+{
+  "name": "oro-reads",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^16.6.1"
+  },
+  "scripts": {
+    "start": "tsx scripts/run-wallet-read.ts",
+    "start:dist": "npm run build && node dist/scripts/run-wallet-read.js",
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}

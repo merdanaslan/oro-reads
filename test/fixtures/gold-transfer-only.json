@@ -1,0 +1,17 @@
+{
+  "signature": "6g82TyQf2wq8ch1f9dwVfB2sP5Kx4Q8u9N1fW2j3k4m5n6p7q8r9s1t2u3v4w5x6y7z8A9b1c2d3e4f5g6h7j8k9",
+  "slot": 104,
+  "timestamp": 1700014400,
+  "fee": 5000,
+  "source": "SYSTEM",
+  "type": "TRANSFER",
+  "tokenTransfers": [
+    {
+      "fromUserAccount": "11111111111111111111111111111111",
+      "toUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "tokenAmount": 0.1,
+      "mint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A"
+    }
+  ],
+  "transactionError": null
+}

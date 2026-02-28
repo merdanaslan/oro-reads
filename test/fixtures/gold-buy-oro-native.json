@@ -1,0 +1,31 @@
+{
+  "signature": "2tfry3xEQwRoYzV9zZ5j67nXk8QW5x6o2m9L6HxDoV9uCxkJPz6RW8Yw9fLzvPU3L9QfE2ZB5d3Y3Fk1D8hYx2n7",
+  "slot": 102,
+  "timestamp": 1700007200,
+  "fee": 6000,
+  "source": "UNKNOWN",
+  "type": "SWAP",
+  "tokenTransfers": [
+    {
+      "fromUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "toUserAccount": "Hn2MXJx3A9S4xUagzGukSgnobVhtSGcVwqDAVBBusZT6",
+      "tokenAmount": 25,
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+    },
+    {
+      "fromUserAccount": "Hn2MXJx3A9S4xUagzGukSgnobVhtSGcVwqDAVBBusZT6",
+      "toUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "tokenAmount": 0.01,
+      "mint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A"
+    }
+  ],
+  "instructions": [
+    {
+      "programId": "iNtiXEFgDNrc6FUt4cFALDe3D8RF3sVnNuKSHwxZRop"
+    }
+  ],
+  "events": {
+    "swap": {}
+  },
+  "transactionError": null
+}

@@ -1,0 +1,31 @@
+{
+  "signature": "5J1kX6mxm2n9y8AB9hHxy71THtgA8T3xHhM7qMd8Sba3fX4B1aWmBN4M8jWn3R8k4Q2qgBYgZ8TP4NwJHnA1b2c3",
+  "slot": 100,
+  "timestamp": 1700000000,
+  "fee": 5000,
+  "source": "JUPITER",
+  "type": "SWAP",
+  "tokenTransfers": [
+    {
+      "fromUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "toUserAccount": "3iS5Bmbf2VmrJf1Tibv2GJpd6f6zUqV4F5zXnAn3nWf3",
+      "tokenAmount": 100,
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+    },
+    {
+      "fromUserAccount": "3iS5Bmbf2VmrJf1Tibv2GJpd6f6zUqV4F5zXnAn3nWf3",
+      "toUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "tokenAmount": 0.04,
+      "mint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A"
+    }
+  ],
+  "instructions": [
+    {
+      "programId": "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4"
+    }
+  ],
+  "events": {
+    "swap": {}
+  },
+  "transactionError": null
+}

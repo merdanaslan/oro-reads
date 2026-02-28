@@ -1,0 +1,26 @@
+{
+  "signature": "4vqYk2j7t8Z9qD7kM5gkQ4oH6uNfA2S6t2E7cK9rR1m8v3N6p3z9kT4yU5w8bV2x1c4m7qP9s2d5f6h8j1k3L4n5",
+  "slot": 103,
+  "timestamp": 1700010800,
+  "fee": 5000,
+  "source": "JUPITER",
+  "type": "SWAP",
+  "tokenTransfers": [
+    {
+      "fromUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "toUserAccount": "8z7Kk7R4b46RMm4n53atd7YVdGN7DDDeWGPAHDq6vNru",
+      "tokenAmount": 1,
+      "mint": "So11111111111111111111111111111111111111112"
+    },
+    {
+      "fromUserAccount": "8z7Kk7R4b46RMm4n53atd7YVdGN7DDDeWGPAHDq6vNru",
+      "toUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "tokenAmount": 0.005,
+      "mint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A"
+    }
+  ],
+  "events": {
+    "swap": {}
+  },
+  "transactionError": null
+}
