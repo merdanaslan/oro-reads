@@ -39,6 +39,7 @@ export function buildPerformanceMetrics(
       side: trade.side,
       goldQty: trade.goldQty,
       txFeeLamports: trade.txFeeLamports,
+      networkFeeSol: trade.txFeeLamports / 1_000_000_000,
       quoteMint: trade.quoteMint,
       quoteQty: trade.quoteQty,
       priceQuotePerGold: trade.priceQuotePerGold,

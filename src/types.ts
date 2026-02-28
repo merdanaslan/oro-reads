@@ -61,6 +61,7 @@ export interface PerTradeBreakdown {
   side: TradeSide;
   goldQty: number;
   txFeeLamports: number;
+  networkFeeSol: number;
   quoteMint: string | null;
   quoteQty: number | null;
   priceQuotePerGold: number | null;
