@@ -145,6 +145,10 @@ Additional outputs:
 - Failed trades are excluded from analytics inputs
 - Unresolved ambiguous signatures are counted correctly
 - Floating-point near-zero dust is clamped in FIFO and unrealized position/cash
+- ORO-native `UNKNOWN` tx fallback:
+  - BUY-like GOLD/USDC flow => `MINT` activity
+  - SELL-like GOLD/USDC flow => `REDEEM` activity
+  - GOLD-only outflow/inflow => `STAKE`/`UNSTAKE` activity
 
 ## Testing
 
@@ -159,6 +163,41 @@ Build:
 ```bash
 npm run build
 ```
+
+## Final Validation Commands
+
+Run these from project root (with `.env` configured):
+
+```bash
+npm run start:dist -- --wallet 7orgFWEBNCsqspUTX8AZurjRfHrgRYZiswm4ewqJmH9E --gold-mint GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A --since-days 365 --out-dir ./out-finalcheck-7org --unrealized-interval 1D
+```
+
+```bash
+npm run start:dist -- --wallet B2CP2WEFFxx1DFDenirn6hhYD2zFV7VC6PfZzyLYFmMN --gold-mint GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A --since-days 30 --out-dir ./out-finalcheck-b2cp --unrealized-interval 1D
+```
+
+```bash
+npm run start:dist -- --wallet DTADb5gofmTux91xuiTVNeSyLnoYweL7MFMVuHimYpTk --gold-mint GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A --since-days 30 --out-dir ./out-finalcheck-dtad --unrealized-interval 1D
+```
+
+```bash
+npm run start:dist -- --wallet EfAN9h43PBAWZsbUpNshpzZBTJiP6hMgxearRbLndPeb --gold-mint GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A --since-days 365 --out-dir ./out-finalcheck-efan --unrealized-interval 1D
+```
+
+## Reference Test Wallets (Mainnet)
+
+Use these to quickly re-validate behavior without searching again:
+
+- `7orgFWEBNCsqspUTX8AZurjRfHrgRYZiswm4ewqJmH9E` (your wallet): basic GOLD swap buy/sell checks.
+- `B2CP2WEFFxx1DFDenirn6hhYD2zFV7VC6PfZzyLYFmMN`: ORO-native `UNKNOWN` mint/redeem style activity and unstake-style activity.
+- `DTADb5gofmTux91xuiTVNeSyLnoYweL7MFMVuHimYpTk`: ORO-native `UNKNOWN` stake-style activity.
+- `EfAN9h43PBAWZsbUpNshpzZBTJiP6hMgxearRbLndPeb`: real `TOKEN_MINT` reward-only flows now mapped to `CLAIM_REWARD`.
+
+Notes:
+
+- These are public wallets; historical activity can change over time.
+- Keep `--since-days` wide enough (for example `30` or `365`) so the relevant signatures are included.
+- Real claim-reward behavior is regression-tested with fixture `test/fixtures/real-oro-claim-reward.json` (signature-auditable).
 
 ## Scope
 

@@ -1,0 +1,14 @@
+{
+  "wallet": "DTADb5gofmTux91xuiTVNeSyLnoYweL7MFMVuHimYpTk",
+  "startTimeUnix": 1772201226,
+  "endTimeUnix": 1772374026,
+  "sinceDays": 2,
+  "unrealizedInterval": "1D",
+  "fetchedTransactions": 57,
+  "pagesFetched": 1,
+  "classifiedTrades": 1,
+  "ambiguousTransactions": 0,
+  "parsedFallbackCalls": 0,
+  "rpcFallbackCalls": 0,
+  "warnings": []
+}

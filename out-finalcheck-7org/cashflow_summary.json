@@ -1,0 +1,16 @@
+{
+  "depositCount": 338,
+  "withdrawalCount": 51,
+  "totalDepositsByMint": {
+    "SOL_NATIVE": 0.7332604070000001,
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": 2509.678312
+  },
+  "totalWithdrawalsByMint": {
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": 10422.674111,
+    "SOL_NATIVE": 0.6332659849999999
+  },
+  "netByMint": {
+    "SOL_NATIVE": 0.0999944220000002,
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": -7912.995799
+  }
+}

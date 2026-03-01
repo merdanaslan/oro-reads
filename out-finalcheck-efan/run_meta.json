@@ -1,0 +1,14 @@
+{
+  "wallet": "EfAN9h43PBAWZsbUpNshpzZBTJiP6hMgxearRbLndPeb",
+  "startTimeUnix": 1740845299,
+  "endTimeUnix": 1772381299,
+  "sinceDays": 365,
+  "unrealizedInterval": "1D",
+  "fetchedTransactions": 862,
+  "pagesFetched": 10,
+  "classifiedTrades": 151,
+  "ambiguousTransactions": 0,
+  "parsedFallbackCalls": 0,
+  "rpcFallbackCalls": 0,
+  "warnings": []
+}

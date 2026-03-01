@@ -1,0 +1,14 @@
+{
+  "stakeCount": 45,
+  "unstakeCount": 22,
+  "claimRewardCount": 22,
+  "totalStakedGold": 0.16318400000000002,
+  "totalUnstakedGold": 0.005017000000000003,
+  "netStakedGold": 0.15816700000000003,
+  "totalClaimedRewardsByMint": {
+    "stGLwL2sSVBuzGzU6F5KKteuQ9ruhbpyZuRWdugwBKF": 0.00010299999999999998,
+    "stGkA722tvGBgGwiaUAGmBBtwCGQCQRnHSxe3DWKLNv": 0.00004
+  },
+  "totalStakingFeesLamports": 3200964,
+  "totalStakingFeesSol": 0.003200964
+}

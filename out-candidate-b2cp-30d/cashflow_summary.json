@@ -1,0 +1,20 @@
+{
+  "depositCount": 18,
+  "withdrawalCount": 24,
+  "totalDepositsByMint": {
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": 8131.0088559999995,
+    "6FrrzDk5mQARGc1TDYoyVnSyRdds1t4PbtohCD6p3tgG": 7996.254946999999,
+    "SOL_NATIVE": 0.0008858080000000001
+  },
+  "totalWithdrawalsByMint": {
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": 12132,
+    "SOL_NATIVE": 0.01929584,
+    "3ThdFZQKM6kRyVGLG48kaPg5TRMhYMKY1iCRa9xop1WC": 6839.98623
+  },
+  "netByMint": {
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": -4000.9911440000005,
+    "6FrrzDk5mQARGc1TDYoyVnSyRdds1t4PbtohCD6p3tgG": 7996.254946999999,
+    "SOL_NATIVE": -0.018410032,
+    "3ThdFZQKM6kRyVGLG48kaPg5TRMhYMKY1iCRa9xop1WC": -6839.98623
+  }
+}

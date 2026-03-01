@@ -1,0 +1,23 @@
+{
+  "provider": "birdeye",
+  "points": [
+    {
+      "period": "2026-02-28",
+      "goldPositionQty": 0,
+      "usdcCash": 0,
+      "goldPriceUsd": 5388.057665237257,
+      "equityUsd": 0,
+      "drawdownPct": null
+    },
+    {
+      "period": "2026-03-01",
+      "goldPositionQty": 0,
+      "usdcCash": 0,
+      "goldPriceUsd": 5400.501786632814,
+      "equityUsd": 0,
+      "drawdownPct": null
+    }
+  ],
+  "maxDrawdownPct": null,
+  "warnings": []
+}

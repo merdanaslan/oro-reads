@@ -1,0 +1,40 @@
+{
+  "wallet": "7orgFWEBNCsqspUTX8AZurjRfHrgRYZiswm4ewqJmH9E",
+  "asOfUnix": 1772381230,
+  "totalUsdValue": 20.412538248122637,
+  "solBalance": 0.120951101,
+  "goldBalance": 0,
+  "usdcBalance": 9.998066,
+  "tokens": [
+    {
+      "mint": "So11111111111111111111111111111111111111111",
+      "symbol": "SOL",
+      "name": "Solana",
+      "balance": 0.120951101,
+      "decimals": 9,
+      "tokenProgram": "spl-token",
+      "pricePerToken": 85.80345153808594,
+      "usdValue": 10.378021933131638
+    },
+    {
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "symbol": "USDC",
+      "name": "USD Coin",
+      "balance": 9.998066,
+      "decimals": 6,
+      "tokenProgram": "spl-token",
+      "pricePerToken": 1.000083,
+      "usdValue": 9.99889553619194
+    },
+    {
+      "mint": "Hax9LTgsQkze1YFychnBLtFH8gYbQKtKfWKKg2SP6gdD",
+      "symbol": "TAI",
+      "name": "TARS AI",
+      "balance": 2.5,
+      "decimals": 9,
+      "tokenProgram": "spl-token",
+      "pricePerToken": 0.0142483115,
+      "usdValue": 0.03562077879905701
+    }
+  ]
+}

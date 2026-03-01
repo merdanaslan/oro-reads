@@ -1,0 +1,56 @@
+{
+  "entries": [
+    {
+      "source": "UNKNOWN",
+      "tradeCount": 623,
+      "buyCount": 381,
+      "sellCount": 242,
+      "totalGoldVolume": 121.14506699999984,
+      "totalUsdcVolume": 602522.0048619999,
+      "totalFeesLamports": 3115000,
+      "totalFeesSol": 0.003115,
+      "realizedPnlUsdc": 400.8721616376755,
+      "winningSellCount": 195,
+      "losingSellCount": 46
+    },
+    {
+      "source": "JUPITER",
+      "tradeCount": 516,
+      "buyCount": 228,
+      "sellCount": 288,
+      "totalGoldVolume": 104.11134799999991,
+      "totalUsdcVolume": 516134.77020700026,
+      "totalFeesLamports": 2580000,
+      "totalFeesSol": 0.00258,
+      "realizedPnlUsdc": 1403.6831159302112,
+      "winningSellCount": 246,
+      "losingSellCount": 39
+    },
+    {
+      "source": "SYSTEM_PROGRAM",
+      "tradeCount": 107,
+      "buyCount": 14,
+      "sellCount": 93,
+      "totalGoldVolume": 17.036456999999995,
+      "totalUsdcVolume": 86942.95909800002,
+      "totalFeesLamports": 535000,
+      "totalFeesSol": 0.000535,
+      "realizedPnlUsdc": 616.8081671768102,
+      "winningSellCount": 80,
+      "losingSellCount": 13
+    },
+    {
+      "source": "TITAN",
+      "tradeCount": 1,
+      "buyCount": 1,
+      "sellCount": 0,
+      "totalGoldVolume": 0.00010500000000000006,
+      "totalUsdcVolume": 10.992024,
+      "totalFeesLamports": 5000,
+      "totalFeesSol": 0.000005,
+      "realizedPnlUsdc": 0,
+      "winningSellCount": 0,
+      "losingSellCount": 0
+    }
+  ]
+}

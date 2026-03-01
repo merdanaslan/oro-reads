@@ -1,0 +1,14 @@
+{
+  "wallet": "B2CP2WEFFxx1DFDenirn6hhYD2zFV7VC6PfZzyLYFmMN",
+  "startTimeUnix": 1769782073,
+  "endTimeUnix": 1772374073,
+  "sinceDays": 30,
+  "unrealizedInterval": "1D",
+  "fetchedTransactions": 3559,
+  "pagesFetched": 36,
+  "classifiedTrades": 1375,
+  "ambiguousTransactions": 0,
+  "parsedFallbackCalls": 0,
+  "rpcFallbackCalls": 0,
+  "warnings": []
+}

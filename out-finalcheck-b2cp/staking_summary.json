@@ -1,0 +1,11 @@
+{
+  "stakeCount": 0,
+  "unstakeCount": 1,
+  "claimRewardCount": 0,
+  "totalStakedGold": 0,
+  "totalUnstakedGold": 0.000002,
+  "netStakedGold": -0.000002,
+  "totalClaimedRewardsByMint": {},
+  "totalStakingFeesLamports": 5000,
+  "totalStakingFeesSol": 0.000005
+}

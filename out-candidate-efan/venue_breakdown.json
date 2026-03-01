@@ -1,0 +1,82 @@
+{
+  "entries": [
+    {
+      "source": "UNKNOWN",
+      "tradeCount": 142,
+      "buyCount": 82,
+      "sellCount": 60,
+      "totalGoldVolume": 0.3221029999999998,
+      "totalUsdcVolume": 1085.0076389999997,
+      "totalFeesLamports": 1757799,
+      "totalFeesSol": 0.001757799,
+      "realizedPnlUsdc": -15.734863762477051,
+      "winningSellCount": 5,
+      "losingSellCount": 55
+    },
+    {
+      "source": "SYSTEM_PROGRAM",
+      "tradeCount": 1,
+      "buyCount": 1,
+      "sellCount": 0,
+      "totalGoldVolume": 0.000047,
+      "totalUsdcVolume": 0.161414,
+      "totalFeesLamports": 80001,
+      "totalFeesSol": 0.000080001,
+      "realizedPnlUsdc": 0,
+      "winningSellCount": 0,
+      "losingSellCount": 0
+    },
+    {
+      "source": "OKX_DEX_ROUTER",
+      "tradeCount": 1,
+      "buyCount": 1,
+      "sellCount": 0,
+      "totalGoldVolume": 0.000001,
+      "totalUsdcVolume": 0.007921,
+      "totalFeesLamports": 80001,
+      "totalFeesSol": 0.000080001,
+      "realizedPnlUsdc": 0,
+      "winningSellCount": 0,
+      "losingSellCount": 0
+    },
+    {
+      "source": "JUPITER",
+      "tradeCount": 3,
+      "buyCount": 1,
+      "sellCount": 2,
+      "totalGoldVolume": 0.000743,
+      "totalUsdcVolume": 0,
+      "totalFeesLamports": 469441,
+      "totalFeesSol": 0.000469441,
+      "realizedPnlUsdc": 0,
+      "winningSellCount": 0,
+      "losingSellCount": 0
+    },
+    {
+      "source": "DFLOW",
+      "tradeCount": 3,
+      "buyCount": 0,
+      "sellCount": 3,
+      "totalGoldVolume": 0.00132,
+      "totalUsdcVolume": 0,
+      "totalFeesLamports": 276079,
+      "totalFeesSol": 0.000276079,
+      "realizedPnlUsdc": 0,
+      "winningSellCount": 0,
+      "losingSellCount": 0
+    },
+    {
+      "source": "OKX",
+      "tradeCount": 1,
+      "buyCount": 0,
+      "sellCount": 1,
+      "totalGoldVolume": 0.000025,
+      "totalUsdcVolume": 0,
+      "totalFeesLamports": 80001,
+      "totalFeesSol": 0.000080001,
+      "realizedPnlUsdc": 0,
+      "winningSellCount": 0,
+      "losingSellCount": 0
+    }
+  ]
+}

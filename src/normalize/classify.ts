@@ -30,6 +30,7 @@ export function classifyEnhancedTransaction(
 ): ClassificationResult {
   const deltas = computeWalletDeltas(tx, ctx.wallet);
   const programIds = extractProgramIds(tx);
+  const isOroNative = isOroNativeEnhancedTx(tx, programIds, ctx.oroProgramIds);
   const swapEvidence = hasSwapEvidence(tx);
   const goldDelta = deltas.tokenDeltas.get(ctx.goldMint) ?? 0;
   const hasGoldDelta = Math.abs(goldDelta) > EPSILON;
@@ -53,6 +54,7 @@ export function classifyEnhancedTransaction(
     status: tx.transactionError ? "FAILED" : "SUCCESS",
     deltas,
     programIds,
+    isOroNative,
     hasSwapEvidence: swapEvidence,
     ctx
   });
@@ -86,6 +88,7 @@ export function classifyRawFallbackTransaction(
 ): NormalizedGoldTrade | null {
   const deltas = computeRawWalletDeltas(rawTx, ctx.wallet);
   const programIds = extractRawProgramIds(rawTx);
+  const isOroNative = programIds.some((programId) => ctx.oroProgramIds.has(programId));
 
   return buildTradeFromDeltas({
     signature: base.signature,
@@ -97,6 +100,7 @@ export function classifyRawFallbackTransaction(
     status: rawTx.meta?.err ? "FAILED" : "SUCCESS",
     deltas,
     programIds,
+    isOroNative,
     hasSwapEvidence: true,
     ctx
   });
@@ -112,6 +116,7 @@ interface BuildTradeInput {
   status: "SUCCESS" | "FAILED";
   deltas: WalletDeltas;
   programIds: string[];
+  isOroNative: boolean;
   hasSwapEvidence: boolean;
   ctx: ClassifyContext;
 }
@@ -145,8 +150,7 @@ function buildTradeFromDeltas(input: BuildTradeInput): NormalizedGoldTrade | nul
   const priceQuotePerGold =
     quoteQty !== null && quoteQty > EPSILON ? quoteQty / Math.abs(goldDelta) : null;
 
-  const isOroNative = input.programIds.some((programId) => input.ctx.oroProgramIds.has(programId));
-  const venueTag = deriveVenueTag(input.source, input.programIds, isOroNative);
+  const venueTag = deriveVenueTag(input.source, input.programIds, input.isOroNative);
 
   return {
     signature: input.signature,
@@ -164,7 +168,7 @@ function buildTradeFromDeltas(input: BuildTradeInput): NormalizedGoldTrade | nul
     source: input.source,
     type: input.type,
     venueTag,
-    isOroNative,
+    isOroNative: input.isOroNative,
     programIds: dedupe(input.programIds),
     valuationStatus
   };
@@ -259,6 +263,21 @@ function selectQuote(
 
 function dedupe(values: string[]): string[] {
   return Array.from(new Set(values));
+}
+
+function isOroNativeEnhancedTx(
+  tx: EnhancedTransaction,
+  programIds: string[],
+  oroProgramIds: Set<string>
+): boolean {
+  if (programIds.some((programId) => oroProgramIds.has(programId))) {
+    return true;
+  }
+
+  return (tx.accountData ?? []).some((entry) => {
+    const account = entry.account ?? "";
+    return oroProgramIds.has(account);
+  });
 }
 
 const JUPITER_PROGRAM_IDS = new Set<string>([

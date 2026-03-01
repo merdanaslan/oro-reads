@@ -1,0 +1,30 @@
+{
+  "wallet": "EfAN9h43PBAWZsbUpNshpzZBTJiP6hMgxearRbLndPeb",
+  "asOfUnix": 1772381108,
+  "totalUsdValue": 0.06486291796875,
+  "solBalance": 0,
+  "goldBalance": 0.000012,
+  "usdcBalance": 0,
+  "tokens": [
+    {
+      "mint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A",
+      "symbol": "GOLD",
+      "name": "GOLD",
+      "balance": 0.000012,
+      "decimals": 6,
+      "tokenProgram": "spl-token",
+      "pricePerToken": 5405.243,
+      "usdValue": 0.06486291796875
+    },
+    {
+      "mint": "So11111111111111111111111111111111111111111",
+      "symbol": "SOL",
+      "name": "Solana",
+      "balance": 0,
+      "decimals": 9,
+      "tokenProgram": "spl-token",
+      "pricePerToken": 85.80345153808594,
+      "usdValue": 0
+    }
+  ]
+}

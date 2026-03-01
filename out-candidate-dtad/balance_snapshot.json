@@ -1,0 +1,60 @@
+{
+  "wallet": "DTADb5gofmTux91xuiTVNeSyLnoYweL7MFMVuHimYpTk",
+  "asOfUnix": 1772377975,
+  "totalUsdValue": 2.851991629586563,
+  "solBalance": 0.032996792,
+  "goldBalance": 0.000002,
+  "usdcBalance": 0.004796,
+  "tokens": [
+    {
+      "mint": "So11111111111111111111111111111111111111111",
+      "symbol": "SOL",
+      "name": "Solana",
+      "balance": 0.032996792,
+      "decimals": 9,
+      "tokenProgram": "spl-token",
+      "pricePerToken": 85.95951080322266,
+      "usdValue": 2.8363880983956906
+    },
+    {
+      "mint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A",
+      "symbol": "GOLD",
+      "name": "GOLD",
+      "balance": 0.000002,
+      "decimals": 6,
+      "tokenProgram": "spl-token",
+      "pricePerToken": 5403.6387,
+      "usdValue": 0.01080727734375
+    },
+    {
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "symbol": "USDC",
+      "name": "USD Coin",
+      "balance": 0.004796,
+      "decimals": 6,
+      "tokenProgram": "spl-token",
+      "pricePerToken": 1.0000529,
+      "usdValue": 0.004796253847122192
+    },
+    {
+      "mint": "FfrLtQ2Zz6dbajCfKabXJeYtWqYmBwhw3GDJT4aJDTRX",
+      "symbol": "SEKR",
+      "name": "Seeker X Moonbirds",
+      "balance": 1,
+      "decimals": 0,
+      "tokenProgram": "token-2022",
+      "pricePerToken": null,
+      "usdValue": null
+    },
+    {
+      "mint": "51jQu1rGnq3GJURCAqQbGxCRa1hkSbSEjATMc4JrXRyX",
+      "symbol": "RETROPASS",
+      "name": "Astrolab Retro Pass",
+      "balance": 2,
+      "decimals": 0,
+      "tokenProgram": "spl-token",
+      "pricePerToken": null,
+      "usdValue": null
+    }
+  ]
+}

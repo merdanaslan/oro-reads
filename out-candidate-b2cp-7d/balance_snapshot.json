@@ -1,0 +1,70 @@
+{
+  "wallet": "B2CP2WEFFxx1DFDenirn6hhYD2zFV7VC6PfZzyLYFmMN",
+  "asOfUnix": 1772377055,
+  "totalUsdValue": 4055.3649631968933,
+  "solBalance": 0.271937289,
+  "goldBalance": 0.005855,
+  "usdcBalance": 2000.953282,
+  "tokens": [
+    {
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "symbol": "USDC",
+      "name": "USD Coin",
+      "balance": 2000.953282,
+      "decimals": 6,
+      "tokenProgram": "spl-token",
+      "pricePerToken": 0.9999967,
+      "usdValue": 2000.9467223639726
+    },
+    {
+      "mint": "2u1tszSeqZ3qBWF3uNGPFc8TzMk2tdiwknnRMWGWjGWH",
+      "symbol": "USDG",
+      "name": "Global Dollar",
+      "balance": 1000.029985,
+      "decimals": 6,
+      "tokenProgram": "token-2022",
+      "pricePerToken": 0.9999802,
+      "usdValue": 1000.0101956645691
+    },
+    {
+      "mint": "6FrrzDk5mQARGc1TDYoyVnSyRdds1t4PbtohCD6p3tgG",
+      "symbol": "USX",
+      "name": "USX",
+      "balance": 1000.03149,
+      "decimals": 6,
+      "tokenProgram": "spl-token",
+      "pricePerToken": 0.99954325,
+      "usdValue": 999.5747252240163
+    },
+    {
+      "mint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A",
+      "symbol": "GOLD",
+      "name": "GOLD",
+      "balance": 0.005855,
+      "decimals": 6,
+      "tokenProgram": "spl-token",
+      "pricePerToken": 5378.676,
+      "usdValue": 31.49214669921875
+    },
+    {
+      "mint": "So11111111111111111111111111111111111111111",
+      "symbol": "SOL",
+      "name": "Solana",
+      "balance": 0.271937289,
+      "decimals": 9,
+      "tokenProgram": "spl-token",
+      "pricePerToken": 85.78546905517578,
+      "usdValue": 23.328267890457894
+    },
+    {
+      "mint": "5Y8NV33Vv7WbnLfq3zBcKSdYPrk7g2KoiQoe7M2tcxp5",
+      "symbol": "ONe",
+      "name": "OnRe Tokenized Reinsurance",
+      "balance": 0.011949187,
+      "decimals": 9,
+      "tokenProgram": "spl-token",
+      "pricePerToken": 1.0800195,
+      "usdValue": 0.012905354658820629
+    }
+  ]
+}

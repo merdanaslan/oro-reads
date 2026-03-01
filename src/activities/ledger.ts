@@ -25,14 +25,21 @@ export function buildActivityLedger(
   for (const tx of transactions) {
     const swapTrade = swapTradesBySignature.get(tx.signature);
     if (swapTrade) {
-      entries.push(fromSwapTrade(swapTrade, ctx.usdcMint));
+      entries.push(fromSwapTrade(swapTrade, ctx.usdcMint, inferSwapActivityType(swapTrade, ctx.usdcMint)));
       continue;
     }
 
     const deltas = computeWalletDeltas(tx, ctx.wallet);
     const programIds = extractProgramIds(tx);
+    const isOroNative =
+      programIds.some((programId) => ctx.oroProgramIds.has(programId)) ||
+      (tx.accountData ?? []).some((entry) => {
+        const account = entry.account ?? "";
+        return ctx.oroProgramIds.has(account);
+      });
     const goldDelta = deltas.tokenDeltas.get(ctx.goldMint) ?? 0;
     const usdcDelta = deltas.tokenDeltas.get(ctx.usdcMint) ?? 0;
+    const reward = selectRewardDelta(deltas.tokenDeltas, ctx.goldMint, ctx.usdcMint);
 
     const type = tx.type ?? "UNKNOWN";
     const source = tx.source ?? "UNKNOWN";
@@ -41,15 +48,16 @@ export function buildActivityLedger(
       source,
       goldDelta,
       usdcDelta,
-      isOroNative: programIds.some((programId) => ctx.oroProgramIds.has(programId))
+      isOroNative,
+      hasRewardCandidate: reward.rewardMint !== null && reward.rewardQty !== null
     });
 
     if (!activityType) {
       continue;
     }
 
-    const reward = activityType === "CLAIM_REWARD"
-      ? selectRewardDelta(deltas.tokenDeltas, ctx.goldMint, ctx.usdcMint)
+    const rewardForEntry = activityType === "CLAIM_REWARD"
+      ? reward
       : { rewardMint: null, rewardQty: null };
 
     entries.push({
@@ -61,7 +69,7 @@ export function buildActivityLedger(
       activityType,
       source,
       type,
-      isOroNative: programIds.some((programId) => ctx.oroProgramIds.has(programId)),
+      isOroNative,
       programIds,
       txFeeLamports: tx.fee ?? 0,
       networkFeeSol: (tx.fee ?? 0) / 1_000_000_000,
@@ -73,8 +81,8 @@ export function buildActivityLedger(
       goldQty: Math.abs(goldDelta) > EPSILON ? Math.abs(goldDelta) : null,
       quoteMint: null,
       quoteQty: null,
-      rewardMint: reward.rewardMint,
-      rewardQty: reward.rewardQty
+      rewardMint: rewardForEntry.rewardMint,
+      rewardQty: rewardForEntry.rewardQty
     });
   }
 
@@ -86,7 +94,11 @@ export function buildActivityLedger(
   });
 }
 
-function fromSwapTrade(trade: NormalizedGoldTrade, usdcMint: string): ActivityLedgerEntry {
+function fromSwapTrade(
+  trade: NormalizedGoldTrade,
+  usdcMint: string,
+  activityType: ActivityType = "SWAP"
+): ActivityLedgerEntry {
   const goldDelta = trade.side === "BUY" ? trade.goldQty : -trade.goldQty;
   const usdcDelta =
     trade.quoteMint === usdcMint && trade.quoteQty !== null
@@ -101,7 +113,7 @@ function fromSwapTrade(trade: NormalizedGoldTrade, usdcMint: string): ActivityLe
     timestamp: trade.timestamp,
     status: trade.status,
     wallet: trade.wallet,
-    activityType: "SWAP",
+    activityType,
     source: trade.source,
     type: trade.type,
     isOroNative: trade.isOroNative,
@@ -127,10 +139,20 @@ function classifyNonSwapActivity(input: {
   goldDelta: number;
   usdcDelta: number;
   isOroNative: boolean;
+  hasRewardCandidate: boolean;
 }): ActivityType | null {
   const typeUpper = input.type.toUpperCase();
   const sourceUpper = input.source.toUpperCase();
   const haystack = `${typeUpper} ${sourceUpper}`;
+  const isRewardOnlyFlow =
+    input.isOroNative &&
+    input.hasRewardCandidate &&
+    Math.abs(input.goldDelta) <= EPSILON &&
+    Math.abs(input.usdcDelta) <= EPSILON;
+
+  if (isRewardOnlyFlow) {
+    return "CLAIM_REWARD";
+  }
 
   if (containsWord(haystack, "UNSTAKE") || containsWord(haystack, "WITHDRAW_STAKE")) {
     if (input.isOroNative || Math.abs(input.goldDelta) > EPSILON) {
@@ -175,9 +197,34 @@ function classifyNonSwapActivity(input: {
     if (input.goldDelta < -EPSILON && input.usdcDelta > EPSILON) {
       return "REDEEM";
     }
+
+    // ORO-native stake flow often appears as UNKNOWN type/source in parsed tx.
+    if (input.goldDelta < -EPSILON && Math.abs(input.usdcDelta) <= EPSILON) {
+      return "STAKE";
+    }
+
+    if (input.goldDelta > EPSILON && Math.abs(input.usdcDelta) <= EPSILON) {
+      return "UNSTAKE";
+    }
+
+    if (isRewardOnlyFlow) {
+      return "CLAIM_REWARD";
+    }
   }
 
   return null;
+}
+
+function inferSwapActivityType(trade: NormalizedGoldTrade, usdcMint: string): ActivityType {
+  const sourceUpper = trade.source.toUpperCase();
+  const typeUpper = trade.type.toUpperCase();
+  const isUnknownLabeled = sourceUpper === "UNKNOWN" || typeUpper === "UNKNOWN";
+
+  if (trade.isOroNative && isUnknownLabeled && trade.quoteMint === usdcMint && trade.quoteQty !== null) {
+    return trade.side === "BUY" ? "MINT" : "REDEEM";
+  }
+
+  return "SWAP";
 }
 
 function containsWord(haystack: string, keyword: string): boolean {

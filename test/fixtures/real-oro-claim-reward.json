@@ -1,0 +1,145 @@
+{
+  "description": "EfAN9h43PBAWZsbUpNshpzZBTJiP6hMgxearRbLndPeb minted 0.00 GOLD.",
+  "type": "TOKEN_MINT",
+  "source": "UNKNOWN",
+  "fee": 80000,
+  "feePayer": "EfAN9h43PBAWZsbUpNshpzZBTJiP6hMgxearRbLndPeb",
+  "signature": "5BwhEfQx1m7mu8gsEmWuFtNvoLgiAnVyDtMURoBw7YamkdwbubjWPuBU4GAcwFbDF9N7ATRVTfHkVW4vWopyr4zr",
+  "slot": 359427752,
+  "timestamp": 1754949673,
+  "tokenTransfers": [
+    {
+      "fromTokenAccount": "",
+      "toTokenAccount": "9u3pFgmLqdGXdk2ZFHgUqRLjHKFgyJh9nT92isRwg9kE",
+      "fromUserAccount": "",
+      "toUserAccount": "EfAN9h43PBAWZsbUpNshpzZBTJiP6hMgxearRbLndPeb",
+      "tokenAmount": 0.00004,
+      "mint": "stGkA722tvGBgGwiaUAGmBBtwCGQCQRnHSxe3DWKLNv",
+      "tokenStandard": "Fungible"
+    }
+  ],
+  "nativeTransfers": [],
+  "accountData": [
+    {
+      "account": "EfAN9h43PBAWZsbUpNshpzZBTJiP6hMgxearRbLndPeb",
+      "nativeBalanceChange": -80000,
+      "tokenBalanceChanges": []
+    },
+    {
+      "account": "463tW7zeDUy5VWtpejbv34feTNmcJtgyZ1TWiuyDpyAB",
+      "nativeBalanceChange": 0,
+      "tokenBalanceChanges": []
+    },
+    {
+      "account": "4kYucsn6cXhAyigL86qTZ4ESjMt8GssXrPyPKyq24Kfe",
+      "nativeBalanceChange": 0,
+      "tokenBalanceChanges": []
+    },
+    {
+      "account": "9u3pFgmLqdGXdk2ZFHgUqRLjHKFgyJh9nT92isRwg9kE",
+      "nativeBalanceChange": 0,
+      "tokenBalanceChanges": [
+        {
+          "userAccount": "EfAN9h43PBAWZsbUpNshpzZBTJiP6hMgxearRbLndPeb",
+          "tokenAccount": "9u3pFgmLqdGXdk2ZFHgUqRLjHKFgyJh9nT92isRwg9kE",
+          "rawTokenAmount": {
+            "tokenAmount": "40",
+            "decimals": 6
+          },
+          "mint": "stGkA722tvGBgGwiaUAGmBBtwCGQCQRnHSxe3DWKLNv"
+        }
+      ]
+    },
+    {
+      "account": "stGkA722tvGBgGwiaUAGmBBtwCGQCQRnHSxe3DWKLNv",
+      "nativeBalanceChange": 0,
+      "tokenBalanceChanges": []
+    },
+    {
+      "account": "11111111111111111111111111111111",
+      "nativeBalanceChange": 0,
+      "tokenBalanceChanges": []
+    },
+    {
+      "account": "3PXBuNCKVDWN8M4MbLgJwuQnEKUnfUTM47QpV2JtBTjH",
+      "nativeBalanceChange": 0,
+      "tokenBalanceChanges": []
+    },
+    {
+      "account": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+      "nativeBalanceChange": 0,
+      "tokenBalanceChanges": []
+    },
+    {
+      "account": "ComputeBudget111111111111111111111111111111",
+      "nativeBalanceChange": 0,
+      "tokenBalanceChanges": []
+    },
+    {
+      "account": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A",
+      "nativeBalanceChange": 0,
+      "tokenBalanceChanges": []
+    },
+    {
+      "account": "iNtiXEFgDNrc6FUt4cFALDe3D8RF3sVnNuKSHwxZRop",
+      "nativeBalanceChange": 0,
+      "tokenBalanceChanges": []
+    },
+    {
+      "account": "stakeZZUzk2LgiiLqufNNyDQuUsn8UTzvCWBkWdYaRH",
+      "nativeBalanceChange": 0,
+      "tokenBalanceChanges": []
+    },
+    {
+      "account": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "nativeBalanceChange": 0,
+      "tokenBalanceChanges": []
+    }
+  ],
+  "transactionError": null,
+  "instructions": [
+    {
+      "accounts": [],
+      "data": "3qi1MbrtkR83",
+      "programId": "ComputeBudget111111111111111111111111111111",
+      "innerInstructions": []
+    },
+    {
+      "accounts": [],
+      "data": "Fj2Eoy",
+      "programId": "ComputeBudget111111111111111111111111111111",
+      "innerInstructions": []
+    },
+    {
+      "accounts": [
+        "EfAN9h43PBAWZsbUpNshpzZBTJiP6hMgxearRbLndPeb",
+        "EfAN9h43PBAWZsbUpNshpzZBTJiP6hMgxearRbLndPeb",
+        "3PXBuNCKVDWN8M4MbLgJwuQnEKUnfUTM47QpV2JtBTjH",
+        "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A",
+        "stGkA722tvGBgGwiaUAGmBBtwCGQCQRnHSxe3DWKLNv",
+        "9u3pFgmLqdGXdk2ZFHgUqRLjHKFgyJh9nT92isRwg9kE",
+        "4kYucsn6cXhAyigL86qTZ4ESjMt8GssXrPyPKyq24Kfe",
+        "463tW7zeDUy5VWtpejbv34feTNmcJtgyZ1TWiuyDpyAB",
+        "iNtiXEFgDNrc6FUt4cFALDe3D8RF3sVnNuKSHwxZRop",
+        "11111111111111111111111111111111",
+        "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+      ],
+      "data": "G736HzqvYRomn6dJDMUzyM",
+      "programId": "stakeZZUzk2LgiiLqufNNyDQuUsn8UTzvCWBkWdYaRH",
+      "innerInstructions": [
+        {
+          "accounts": [
+            "stGkA722tvGBgGwiaUAGmBBtwCGQCQRnHSxe3DWKLNv",
+            "9u3pFgmLqdGXdk2ZFHgUqRLjHKFgyJh9nT92isRwg9kE",
+            "3PXBuNCKVDWN8M4MbLgJwuQnEKUnfUTM47QpV2JtBTjH"
+          ],
+          "data": "6HRhJVq8cy8b",
+          "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ]
+    }
+  ],
+  "lighthouseData": null,
+  "events": {}
+}

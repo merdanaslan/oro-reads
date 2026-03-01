@@ -1,0 +1,29 @@
+{
+  "pnlOverTime": {
+    "daily": [],
+    "weekly": []
+  },
+  "avgEntryPrice": 5412.765957446809,
+  "avgExitPrice": null,
+  "avgPositionSizeGold": 0.001175,
+  "avgHoldingDurationSec": null,
+  "perTradeBreakdown": [
+    {
+      "signature": "5RcSKsw5B4aNinjF6crG16iV1JWcLSdqhSvp4KqK8t9pC2E5NPCNLzLJgtcfrxnEHc5UiiEUK8jB6MMubPh2nNGU",
+      "timestamp": 1772371166,
+      "side": "BUY",
+      "goldQty": 0.001175,
+      "txFeeLamports": 91000,
+      "networkFeeSol": 0.000091,
+      "quoteMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "quoteQty": 6.36,
+      "priceQuotePerGold": 5412.765957446809,
+      "valuationStatus": "USDC_VALUED",
+      "venueTag": "TITAN",
+      "realizedPnlUsdc": 0,
+      "matchedQty": 0,
+      "unknownBasisQty": 0,
+      "holdingDurationSec": null
+    }
+  ]
+}

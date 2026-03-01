@@ -1,0 +1,63 @@
+{
+  "provider": "birdeye",
+  "points": [
+    {
+      "period": "2026-02-23",
+      "goldPositionQty": 0,
+      "usdcCash": 0,
+      "goldPriceUsd": 5231.818233610719,
+      "equityUsd": 0,
+      "drawdownPct": null
+    },
+    {
+      "period": "2026-02-24",
+      "goldPositionQty": 0,
+      "usdcCash": 430.80988900000125,
+      "goldPriceUsd": 5173.288608661202,
+      "equityUsd": 430.80988900000125,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-25",
+      "goldPositionQty": 0,
+      "usdcCash": 430.80988900000125,
+      "goldPriceUsd": 5189.102231447847,
+      "equityUsd": 430.80988900000125,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-26",
+      "goldPositionQty": 0,
+      "usdcCash": 430.80988900000125,
+      "goldPriceUsd": 5208.020833333333,
+      "equityUsd": 430.80988900000125,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-27",
+      "goldPositionQty": 0,
+      "usdcCash": 430.80988900000125,
+      "goldPriceUsd": 5243.472201475717,
+      "equityUsd": 430.80988900000125,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-28",
+      "goldPositionQty": 0,
+      "usdcCash": 430.80988900000125,
+      "goldPriceUsd": 5388.057665237257,
+      "equityUsd": 430.80988900000125,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-03-01",
+      "goldPositionQty": 0,
+      "usdcCash": 463.8954760000015,
+      "goldPriceUsd": 5378.675829529115,
+      "equityUsd": 463.8954760000015,
+      "drawdownPct": 0
+    }
+  ],
+  "maxDrawdownPct": 0,
+  "warnings": []
+}

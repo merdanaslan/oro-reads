@@ -1,0 +1,29 @@
+[
+  {
+    "signature": "5RcSKsw5B4aNinjF6crG16iV1JWcLSdqhSvp4KqK8t9pC2E5NPCNLzLJgtcfrxnEHc5UiiEUK8jB6MMubPh2nNGU",
+    "slot": 403509109,
+    "timestamp": 1772371166,
+    "status": "SUCCESS",
+    "wallet": "DTADb5gofmTux91xuiTVNeSyLnoYweL7MFMVuHimYpTk",
+    "side": "BUY",
+    "goldMint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A",
+    "goldQty": 0.001175,
+    "quoteMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "quoteQty": 6.36,
+    "priceQuotePerGold": 5412.765957446809,
+    "txFeeLamports": 91000,
+    "source": "TITAN",
+    "type": "SWAP",
+    "venueTag": "TITAN",
+    "isOroNative": false,
+    "programIds": [
+      "ComputeBudget111111111111111111111111111111",
+      "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+      "T1TANpTeScyeqVzzgNViGDNrkQ6qHz9KrSBS4aNXvGT",
+      "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo",
+      "L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95"
+    ],
+    "valuationStatus": "USDC_VALUED"
+  }
+]

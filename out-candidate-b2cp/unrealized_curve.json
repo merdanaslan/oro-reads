@@ -1,0 +1,247 @@
+{
+  "provider": "birdeye",
+  "points": [
+    {
+      "period": "2026-01-31",
+      "goldPositionQty": 0,
+      "usdcCash": 412.38641500000085,
+      "goldPriceUsd": 4837.390424441934,
+      "equityUsd": 412.38641500000085,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-01",
+      "goldPositionQty": 0,
+      "usdcCash": 412.6730600000009,
+      "goldPriceUsd": 4813.9475535990905,
+      "equityUsd": 412.6730600000009,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-02",
+      "goldPositionQty": 0.00007599999999979845,
+      "usdcCash": 533.3647259999996,
+      "goldPriceUsd": 4753.290321503223,
+      "equityUsd": 533.7259760644329,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-03",
+      "goldPositionQty": 0.00007599999999974294,
+      "usdcCash": 640.851807,
+      "goldPriceUsd": 4959.61216115945,
+      "equityUsd": 641.2287375242469,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-04",
+      "goldPositionQty": 0.00007599999999974294,
+      "usdcCash": 709.8790430000001,
+      "goldPriceUsd": 5047.33904909576,
+      "equityUsd": 710.2626407677301,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-05",
+      "goldPositionQty": 0.00101899999999977,
+      "usdcCash": 806.808555999999,
+      "goldPriceUsd": 4849.7111649838525,
+      "equityUsd": 811.7504116771165,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-06",
+      "goldPositionQty": 0.0021699999999998387,
+      "usdcCash": 858.6882739999974,
+      "goldPriceUsd": 4935.366489213636,
+      "equityUsd": 869.3980192815901,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-07",
+      "goldPositionQty": 0.0022319999999998383,
+      "usdcCash": 859.9231689999973,
+      "goldPriceUsd": 4989.085126433905,
+      "equityUsd": 871.058807002197,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-08",
+      "goldPositionQty": 0.0022319999999998383,
+      "usdcCash": 859.9231689999973,
+      "goldPriceUsd": 5010.012591694023,
+      "equityUsd": 871.1055171046576,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-09",
+      "goldPositionQty": 0.002231999999999734,
+      "usdcCash": 949.151058999997,
+      "goldPriceUsd": 5028.9030198071105,
+      "equityUsd": 960.3755705402051,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-10",
+      "goldPositionQty": 0.002231999999999734,
+      "usdcCash": 949.267272999997,
+      "goldPriceUsd": 5046.9043323058195,
+      "equityUsd": 960.5319634697022,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-11",
+      "goldPositionQty": 0.0026419999999997557,
+      "usdcCash": 951.601328999997,
+      "goldPriceUsd": 5066.963733477573,
+      "equityUsd": 964.9882471838436,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-12",
+      "goldPositionQty": 0.0026419999999997557,
+      "usdcCash": 951.601328999997,
+      "goldPriceUsd": 4923.626953086356,
+      "equityUsd": 964.6095514100499,
+      "drawdownPct": -0.03924356331787583
+    },
+    {
+      "period": "2026-02-13",
+      "goldPositionQty": 0.0027379999999997406,
+      "usdcCash": 1266.5301529999956,
+      "goldPriceUsd": 5018.815846915225,
+      "equityUsd": 1280.2716707888483,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-14",
+      "goldPositionQty": 0.0027379999999997406,
+      "usdcCash": 1266.5301529999956,
+      "goldPriceUsd": 5036.659869898477,
+      "equityUsd": 1280.3205277237764,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-15",
+      "goldPositionQty": 0.0027379999999997406,
+      "usdcCash": 1266.5301529999956,
+      "goldPriceUsd": 5010.416653194188,
+      "equityUsd": 1280.24867379644,
+      "drawdownPct": -0.0056121827136640275
+    },
+    {
+      "period": "2026-02-16",
+      "goldPositionQty": 0.0027379999999997406,
+      "usdcCash": 1266.5301529999956,
+      "goldPriceUsd": 4982.453404119842,
+      "equityUsd": 1280.1721104204744,
+      "drawdownPct": -0.011592198991443502
+    },
+    {
+      "period": "2026-02-17",
+      "goldPositionQty": 0.0027379999999997406,
+      "usdcCash": 1266.5301529999956,
+      "goldPriceUsd": 4910.909427443238,
+      "equityUsd": 1279.976223012334,
+      "drawdownPct": -0.026892071476393695
+    },
+    {
+      "period": "2026-02-18",
+      "goldPositionQty": 0.0027379999999997406,
+      "usdcCash": 1420.4666359999956,
+      "goldPriceUsd": 4989.191036318207,
+      "equityUsd": 1434.1270410574334,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-19",
+      "goldPositionQty": 0.002737999999999935,
+      "usdcCash": 1750.2600219999922,
+      "goldPriceUsd": 5011.130121876149,
+      "equityUsd": 1763.9804962736887,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-20",
+      "goldPositionQty": 0.002842999999999935,
+      "usdcCash": 1739.2679979999923,
+      "goldPriceUsd": 5073.527772986875,
+      "equityUsd": 1753.6920374585936,
+      "drawdownPct": -0.5832524133247989
+    },
+    {
+      "period": "2026-02-21",
+      "goldPositionQty": 0.002842999999999935,
+      "usdcCash": 1739.2679979999923,
+      "goldPriceUsd": 5136.334738802206,
+      "equityUsd": 1753.8705976624067,
+      "drawdownPct": -0.573129840870611
+    },
+    {
+      "period": "2026-02-22",
+      "goldPositionQty": 0.002842999999999929,
+      "usdcCash": 1739.3439209999922,
+      "goldPriceUsd": 5150.318277118283,
+      "equityUsd": 1753.9862758618392,
+      "drawdownPct": -0.5665720473078768
+    },
+    {
+      "period": "2026-02-23",
+      "goldPositionQty": 0.002842999999999929,
+      "usdcCash": 1739.4173699999926,
+      "goldPriceUsd": 5231.818233610719,
+      "equityUsd": 1754.2914292381474,
+      "drawdownPct": -0.5492729118042333
+    },
+    {
+      "period": "2026-02-24",
+      "goldPositionQty": 0.0028430000000000677,
+      "usdcCash": 2170.2272589999934,
+      "goldPriceUsd": 5173.288608661202,
+      "equityUsd": 2184.9349185144174,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-25",
+      "goldPositionQty": 0.0028430000000000677,
+      "usdcCash": 2170.2272589999934,
+      "goldPriceUsd": 5189.102231447847,
+      "equityUsd": 2184.979876644,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-26",
+      "goldPositionQty": 0.0028430000000000677,
+      "usdcCash": 2170.2272589999934,
+      "goldPriceUsd": 5208.020833333333,
+      "equityUsd": 2185.0336622291607,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-27",
+      "goldPositionQty": 0.0028430000000000677,
+      "usdcCash": 2170.2272589999934,
+      "goldPriceUsd": 5243.472201475717,
+      "equityUsd": 2185.134450468789,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-02-28",
+      "goldPositionQty": 0.0028430000000000677,
+      "usdcCash": 2170.2272589999934,
+      "goldPriceUsd": 5388.057665237257,
+      "equityUsd": 2185.5455069422633,
+      "drawdownPct": 0
+    },
+    {
+      "period": "2026-03-01",
+      "goldPositionQty": 0.002843000000000151,
+      "usdcCash": 2203.3128459999944,
+      "goldPriceUsd": 5400.501786632814,
+      "equityUsd": 2218.666472579392,
+      "drawdownPct": 0
+    }
+  ],
+  "maxDrawdownPct": -0.5832524133247989,
+  "warnings": []
+}
