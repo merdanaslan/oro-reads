@@ -1,7 +1,7 @@
 {
   "wallet": "7orgFWEBNCsqspUTX8AZurjRfHrgRYZiswm4ewqJmH9E",
-  "asOfUnix": 1772373657,
-  "totalUsdValue": 20.4767669039259,
+  "asOfUnix": 1772372780,
+  "totalUsdValue": 20.284419586386377,
   "solBalance": 0.120951101,
   "goldBalance": 0,
   "usdcBalance": 9.998066,
@@ -13,8 +13,8 @@
       "balance": 0.120951101,
       "decimals": 9,
       "tokenProgram": "spl-token",
-      "pricePerToken": 86.3504409790039,
-      "usdValue": 10.444180908246041
+      "pricePerToken": 84.7606201171875,
+      "usdValue": 10.251890324616578
     },
     {
       "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
@@ -23,8 +23,8 @@
       "balance": 9.998066,
       "decimals": 6,
       "tokenProgram": "spl-token",
-      "pricePerToken": 0.9999696,
-      "usdValue": 9.997762075102091
+      "pricePerToken": 0.99996,
+      "usdValue": 9.997666130183338
     },
     {
       "mint": "Hax9LTgsQkze1YFychnBLtFH8gYbQKtKfWKKg2SP6gdD",
@@ -33,8 +33,8 @@
       "balance": 2.5,
       "decimals": 9,
       "tokenProgram": "spl-token",
-      "pricePerToken": 0.013929568,
-      "usdValue": 0.03482392057776451
+      "pricePerToken": 0.013945253,
+      "usdValue": 0.03486313158646226
     }
   ]
 }

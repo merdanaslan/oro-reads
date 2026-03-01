@@ -55,4 +55,18 @@ describe("runFifoPnl", () => {
     expect(result.realizedPnlUsdc).toBe(0);
     expect(result.unknownBasisSellQty).toBeCloseTo(0.2);
   });
+
+  it("clamps floating-point dust to zero on full close", () => {
+    const trades: NormalizedGoldTrade[] = [
+      trade({ signature: "buy-a", side: "BUY", timestamp: 100, goldQty: 0.1, quoteQty: 1, priceQuotePerGold: 10 }),
+      trade({ signature: "buy-b", side: "BUY", timestamp: 110, goldQty: 0.2, quoteQty: 2, priceQuotePerGold: 10 }),
+      trade({ signature: "sell-all", side: "SELL", timestamp: 120, goldQty: 0.3, quoteQty: 3, priceQuotePerGold: 10 })
+    ];
+
+    const result = runFifoPnl(trades, USDC_MINT);
+
+    expect(result.realizedPnlUsdc).toBe(0);
+    expect(result.unknownBasisSellQty).toBe(0);
+    expect(result.tradeResults["sell-all"].unknownBasisQty).toBe(0);
+  });
 });

@@ -117,4 +117,82 @@ describe("portfolio extension metrics", () => {
     expect(curve.points.length).toBeGreaterThan(0);
     expect(curve.warnings.length).toBeGreaterThan(0);
   });
+
+  it("clamps near-zero unrealized position and cash after full close", async () => {
+    const trades: NormalizedGoldTrade[] = [
+      {
+        signature: "buy-a",
+        slot: 1,
+        timestamp: 1700000000,
+        status: "SUCCESS",
+        wallet: WALLET,
+        side: "BUY",
+        goldMint: GOLD_MINT,
+        goldQty: 0.1,
+        quoteMint: USDC_MINT,
+        quoteQty: 1,
+        priceQuotePerGold: 10,
+        txFeeLamports: 5000,
+        source: "JUPITER",
+        type: "SWAP",
+        venueTag: "JUPITER",
+        isOroNative: false,
+        programIds: [],
+        valuationStatus: "USDC_VALUED"
+      },
+      {
+        signature: "buy-b",
+        slot: 2,
+        timestamp: 1700000100,
+        status: "SUCCESS",
+        wallet: WALLET,
+        side: "BUY",
+        goldMint: GOLD_MINT,
+        goldQty: 0.2,
+        quoteMint: USDC_MINT,
+        quoteQty: 2,
+        priceQuotePerGold: 10,
+        txFeeLamports: 5000,
+        source: "JUPITER",
+        type: "SWAP",
+        venueTag: "JUPITER",
+        isOroNative: false,
+        programIds: [],
+        valuationStatus: "USDC_VALUED"
+      },
+      {
+        signature: "sell-all",
+        slot: 3,
+        timestamp: 1700000200,
+        status: "SUCCESS",
+        wallet: WALLET,
+        side: "SELL",
+        goldMint: GOLD_MINT,
+        goldQty: 0.3,
+        quoteMint: USDC_MINT,
+        quoteQty: 3,
+        priceQuotePerGold: 10,
+        txFeeLamports: 5000,
+        source: "JUPITER",
+        type: "SWAP",
+        venueTag: "JUPITER",
+        isOroNative: false,
+        programIds: [],
+        valuationStatus: "USDC_VALUED"
+      }
+    ];
+
+    const curve = await buildUnrealizedCurve({
+      trades,
+      usdcMint: USDC_MINT,
+      goldMint: GOLD_MINT,
+      startTimeUnix: 1700000000,
+      endTimeUnix: 1700003600,
+      interval: "1H"
+    });
+
+    const last = curve.points[curve.points.length - 1];
+    expect(last.goldPositionQty).toBe(0);
+    expect(last.usdcCash).toBe(0);
+  });
 });

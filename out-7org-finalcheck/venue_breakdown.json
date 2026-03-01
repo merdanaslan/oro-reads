@@ -1,0 +1,17 @@
+{
+  "entries": [
+    {
+      "source": "TITAN",
+      "tradeCount": 3,
+      "buyCount": 2,
+      "sellCount": 1,
+      "totalGoldVolume": 0.0007340000000000001,
+      "totalUsdcVolume": 3.9660640000000003,
+      "totalFeesLamports": 1896671,
+      "totalFeesSol": 0.001896671,
+      "realizedPnlUsdc": -0.033935999999999744,
+      "winningSellCount": 0,
+      "losingSellCount": 1
+    }
+  ]
+}

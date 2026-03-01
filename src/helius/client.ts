@@ -141,14 +141,47 @@ export class HeliusClient {
   }
 
   public async getWalletBalances(wallet: string): Promise<HeliusWalletBalancesResponse> {
-    const query = new URLSearchParams({
-      "api-key": this.apiKey
-    });
-    const url = `https://api.helius.xyz/v1/wallet/${wallet}/balances?${query.toString()}`;
-    const payload = await this.requestJson<Record<string, unknown>>(url, {
-      method: "GET"
-    });
-    return unwrapWalletBalances(payload);
+    const mergedTokens = new Map<string, NonNullable<HeliusWalletBalancesResponse["balances"]>[number]>();
+    let nativeBalance: HeliusWalletBalancesResponse["nativeBalance"] = undefined;
+    let totalValueUsd: number | undefined;
+    let page = 1;
+    let hasMore = true;
+
+    while (hasMore && page <= 100) {
+      const query = new URLSearchParams({
+        "api-key": this.apiKey,
+        page: String(page),
+        limit: "100"
+      });
+      const url = `https://api.helius.xyz/v1/wallet/${wallet}/balances?${query.toString()}`;
+      const payload = await this.requestJson<Record<string, unknown>>(url, {
+        method: "GET"
+      });
+      const unwrapped = unwrapWalletBalances(payload);
+
+      if (page === 1) {
+        nativeBalance = unwrapped.nativeBalance;
+        totalValueUsd = unwrapped.totalValueUsd;
+      }
+
+      const pageTokens = unwrapped.tokens ?? unwrapped.tokenBalances ?? unwrapped.balances ?? [];
+      for (const token of pageTokens) {
+        const mint = token.mint ?? undefined;
+        if (!mint) {
+          continue;
+        }
+        mergedTokens.set(mint, token);
+      }
+
+      hasMore = readHasMore(payload, unwrapped, pageTokens.length);
+      page += 1;
+    }
+
+    return {
+      nativeBalance,
+      totalValueUsd,
+      balances: Array.from(mergedTokens.values())
+    };
   }
 
   private async requestJson<T>(url: string, init: RequestInit): Promise<T> {
@@ -217,4 +250,37 @@ function unwrapWalletBalances(payload: Record<string, unknown>): HeliusWalletBal
     return maybeData as HeliusWalletBalancesResponse;
   }
   return payload as HeliusWalletBalancesResponse;
+}
+
+function readHasMore(
+  rawPayload: Record<string, unknown>,
+  unwrapped: HeliusWalletBalancesResponse,
+  currentPageTokenCount: number
+): boolean {
+  const fromRaw = extractHasMore(rawPayload);
+  if (fromRaw !== null) {
+    return fromRaw;
+  }
+
+  const fromUnwrapped = extractHasMore(unwrapped as unknown as Record<string, unknown>);
+  if (fromUnwrapped !== null) {
+    return fromUnwrapped;
+  }
+
+  // Fallback when pagination metadata is absent.
+  return currentPageTokenCount >= 100;
+}
+
+function extractHasMore(value: Record<string, unknown>): boolean | null {
+  const pagination = value.pagination;
+  if (!pagination || typeof pagination !== "object") {
+    return null;
+  }
+
+  const hasMore = (pagination as { hasMore?: unknown }).hasMore;
+  if (typeof hasMore === "boolean") {
+    return hasMore;
+  }
+
+  return null;
 }

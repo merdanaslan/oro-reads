@@ -107,17 +107,23 @@ export async function runCli(argv: string[], env: NodeJS.ProcessEnv): Promise<vo
     warnings.push(`Gold delta detected but unclassified: ${signature}`);
   }
 
-  const unresolvedAmbiguous = secondPass.ambiguousSignatures.filter((signature) => {
-    const maybeTrade = recoveredTrades.get(signature);
-    return maybeTrade?.valuationStatus === "AMBIGUOUS";
-  });
+  const unresolvedAmbiguous = collectUnresolvedAmbiguousSignatures(
+    secondPass.ambiguousSignatures,
+    recoveredTrades
+  );
 
-  const normalizedTrades = Array.from(recoveredTrades.values()).sort((a, b) => {
+  const normalizedTradesAll = Array.from(recoveredTrades.values()).sort((a, b) => {
     if (a.timestamp !== b.timestamp) {
       return a.timestamp - b.timestamp;
     }
     return a.signature.localeCompare(b.signature);
   });
+
+  const { trades: normalizedTrades, droppedFailedTradeCount } =
+    filterSuccessfulTrades(normalizedTradesAll);
+  if (droppedFailedTradeCount > 0) {
+    warnings.push(`Excluded ${droppedFailedTradeCount} failed trade(s) from analytics outputs.`);
+  }
 
   const fifo = runFifoPnl(normalizedTrades, config.usdcMint);
   const activityLedger = buildActivityLedger(
@@ -209,6 +215,27 @@ interface ClassificationPass {
   tradeMap: Map<string, NormalizedGoldTrade>;
   ambiguousSignatures: string[];
   unclassifiedGoldSignatures: string[];
+}
+
+export function collectUnresolvedAmbiguousSignatures(
+  ambiguousSignatures: string[],
+  recoveredTrades: Map<string, NormalizedGoldTrade>
+): string[] {
+  return ambiguousSignatures.filter((signature) => {
+    const maybeTrade = recoveredTrades.get(signature);
+    return !maybeTrade || maybeTrade.valuationStatus === "AMBIGUOUS";
+  });
+}
+
+export function filterSuccessfulTrades(trades: NormalizedGoldTrade[]): {
+  trades: NormalizedGoldTrade[];
+  droppedFailedTradeCount: number;
+} {
+  const successfulTrades = trades.filter((trade) => trade.status === "SUCCESS");
+  return {
+    trades: successfulTrades,
+    droppedFailedTradeCount: trades.length - successfulTrades.length
+  };
 }
 
 function classifyAll(transactions: EnhancedTransaction[], ctx: ClassifyContext): ClassificationPass {

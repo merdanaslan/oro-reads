@@ -124,4 +124,9 @@ export interface HeliusWalletBalancesResponse {
   balances?: HeliusWalletBalanceToken[];
   tokens?: HeliusWalletBalanceToken[];
   tokenBalances?: HeliusWalletBalanceToken[];
+  pagination?: {
+    page?: number;
+    limit?: number;
+    hasMore?: boolean;
+  };
 }

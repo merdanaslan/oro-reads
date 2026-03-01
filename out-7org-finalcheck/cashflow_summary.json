@@ -1,0 +1,7 @@
+{
+  "depositCount": 0,
+  "withdrawalCount": 0,
+  "totalDepositsByMint": {},
+  "totalWithdrawalsByMint": {},
+  "netByMint": {}
+}

@@ -1,6 +1,8 @@
 import { BirdeyeClient } from "../birdeye/client";
 import { NormalizedGoldTrade, UnrealizedCurve, UnrealizedCurvePoint } from "../types";
 
+const EPSILON = 1e-9;
+
 export async function buildUnrealizedCurve(input: {
   trades: NormalizedGoldTrade[];
   usdcMint: string;
@@ -84,18 +86,19 @@ export async function buildUnrealizedCurve(input: {
       const trade = trades[tradeIndex];
       if (trade.quoteMint === input.usdcMint && trade.quoteQty !== null) {
         if (trade.side === "BUY") {
-          goldPositionQty += trade.goldQty;
-          usdcCash -= trade.quoteQty;
+          goldPositionQty = clampNearZero(goldPositionQty + trade.goldQty);
+          usdcCash = clampNearZero(usdcCash - trade.quoteQty);
         } else {
-          goldPositionQty -= trade.goldQty;
-          usdcCash += trade.quoteQty;
+          goldPositionQty = clampNearZero(goldPositionQty - trade.goldQty);
+          usdcCash = clampNearZero(usdcCash + trade.quoteQty);
         }
       }
       tradeIndex += 1;
     }
 
     const goldPriceUsd = pricesByBucketStart.get(bucket.startUnix) ?? null;
-    const equityUsd = goldPriceUsd !== null ? usdcCash + goldPositionQty * goldPriceUsd : null;
+    const equityUsd =
+      goldPriceUsd !== null ? clampNearZero(usdcCash + goldPositionQty * goldPriceUsd) : null;
 
     let drawdownPct: number | null = null;
     if (equityUsd !== null) {
@@ -103,7 +106,7 @@ export async function buildUnrealizedCurve(input: {
         peakEquity = equityUsd;
       }
 
-      if (peakEquity !== null && peakEquity !== 0) {
+      if (peakEquity !== null && peakEquity > 0) {
         drawdownPct = ((equityUsd - peakEquity) / peakEquity) * 100;
         if (maxDrawdownPct === null || drawdownPct < maxDrawdownPct) {
           maxDrawdownPct = drawdownPct;
@@ -184,4 +187,8 @@ function formatPeriod(unixTime: number, intervalSeconds: number): string {
     return new Date(unixTime * 1000).toISOString().slice(0, 10);
   }
   return new Date(unixTime * 1000).toISOString();
+}
+
+function clampNearZero(value: number): number {
+  return Math.abs(value) <= EPSILON ? 0 : value;
 }

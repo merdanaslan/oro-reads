@@ -28,7 +28,7 @@ export function runFifoPnl(trades: NormalizedGoldTrade[], usdcMint: string): Fif
       if (trade.valuationStatus === "USDC_VALUED" && trade.quoteMint === usdcMint && trade.quoteQty) {
         const unitCostUsdc = trade.quoteQty / trade.goldQty;
         lots.push({
-          qtyRemaining: trade.goldQty,
+          qtyRemaining: clampNearZero(trade.goldQty),
           unitCostUsdc,
           openedAt: trade.timestamp
         });
@@ -45,19 +45,19 @@ export function runFifoPnl(trades: NormalizedGoldTrade[], usdcMint: string): Fif
     }
 
     if (trade.valuationStatus !== "USDC_VALUED" || trade.quoteMint !== usdcMint || !trade.quoteQty) {
-      unknownBasisSellQty += trade.goldQty;
+      unknownBasisSellQty = clampNearZero(unknownBasisSellQty + trade.goldQty);
       tradeResults[trade.signature] = {
         signature: trade.signature,
         realizedPnlUsdc: 0,
         matchedQty: 0,
-        unknownBasisQty: trade.goldQty,
+        unknownBasisQty: clampNearZero(trade.goldQty),
         holdingDurationSec: null
       };
       continue;
     }
 
     const sellUnitPrice = trade.quoteQty / trade.goldQty;
-    let remainingSellQty = trade.goldQty;
+    let remainingSellQty = clampNearZero(trade.goldQty);
     let matchedQty = 0;
     let matchedCost = 0;
     let holdingDurationTotalSec = 0;
@@ -66,41 +66,45 @@ export function runFifoPnl(trades: NormalizedGoldTrade[], usdcMint: string): Fif
       const lot = lots[0];
       const matchedFromLot = Math.min(remainingSellQty, lot.qtyRemaining);
 
-      matchedQty += matchedFromLot;
+      matchedQty = clampNearZero(matchedQty + matchedFromLot);
       matchedCost += matchedFromLot * lot.unitCostUsdc;
       holdingDurationTotalSec += matchedFromLot * Math.max(0, trade.timestamp - lot.openedAt);
 
-      lot.qtyRemaining -= matchedFromLot;
-      remainingSellQty -= matchedFromLot;
+      lot.qtyRemaining = clampNearZero(lot.qtyRemaining - matchedFromLot);
+      remainingSellQty = clampNearZero(remainingSellQty - matchedFromLot);
 
       if (lot.qtyRemaining <= EPSILON) {
         lots.shift();
       }
     }
 
-    const unknownQty = Math.max(0, remainingSellQty);
+    const unknownQty = clampNearZero(Math.max(0, remainingSellQty));
     const matchedProceeds = sellUnitPrice * matchedQty;
-    const realized = matchedProceeds - matchedCost;
+    const realized = clampNearZero(matchedProceeds - matchedCost);
 
-    realizedPnlUsdc += realized;
-    unknownBasisSellQty += unknownQty;
-    matchedQtyTotal += matchedQty;
+    realizedPnlUsdc = clampNearZero(realizedPnlUsdc + realized);
+    unknownBasisSellQty = clampNearZero(unknownBasisSellQty + unknownQty);
+    matchedQtyTotal = clampNearZero(matchedQtyTotal + matchedQty);
     holdingDurationWeightedSec += holdingDurationTotalSec;
 
     tradeResults[trade.signature] = {
       signature: trade.signature,
-      realizedPnlUsdc: realized,
-      matchedQty,
-      unknownBasisQty: unknownQty,
+      realizedPnlUsdc: clampNearZero(realized),
+      matchedQty: clampNearZero(matchedQty),
+      unknownBasisQty: clampNearZero(unknownQty),
       holdingDurationSec: matchedQty > EPSILON ? holdingDurationTotalSec / matchedQty : null
     };
   }
 
   return {
-    realizedPnlUsdc,
-    unknownBasisSellQty,
+    realizedPnlUsdc: clampNearZero(realizedPnlUsdc),
+    unknownBasisSellQty: clampNearZero(unknownBasisSellQty),
     avgHoldingDurationSec:
       matchedQtyTotal > EPSILON ? holdingDurationWeightedSec / matchedQtyTotal : null,
     tradeResults
   };
+}
+
+function clampNearZero(value: number): number {
+  return Math.abs(value) <= EPSILON ? 0 : value;
 }
