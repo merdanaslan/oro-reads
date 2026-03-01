@@ -5,6 +5,8 @@ import sellMeteora from "./fixtures/gold-sell-meteora.json";
 import buyOroNative from "./fixtures/gold-buy-oro-native.json";
 import buyNonUsdc from "./fixtures/gold-buy-non-usdc.json";
 import transferOnly from "./fixtures/gold-transfer-only.json";
+import mintOro from "./fixtures/gold-mint-oro.json";
+import redeemOro from "./fixtures/gold-redeem-oro.json";
 import { classifyEnhancedTransaction, ClassifyContext } from "../src/normalize/classify";
 
 const WALLET = "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ";
@@ -59,5 +61,28 @@ describe("classifyEnhancedTransaction", () => {
     expect(result.trade).toBeNull();
     expect(result.hasGoldDelta).toBe(true);
     expect(result.needsFallback).toBe(false);
+  });
+
+  it("does not treat MINT activity as a swap trade", () => {
+    const result = classifyEnhancedTransaction(mintOro, context);
+    expect(result.trade).toBeNull();
+    expect(result.needsFallback).toBe(false);
+  });
+
+  it("does not treat REDEEM activity as a swap trade", () => {
+    const result = classifyEnhancedTransaction(redeemOro, context);
+    expect(result.trade).toBeNull();
+    expect(result.needsFallback).toBe(false);
+  });
+
+  it("tags TITAN source swaps as TITAN", () => {
+    const titanLike = {
+      ...buyJupiter,
+      source: "TITAN",
+      instructions: [{ programId: "T1TANpTeScyeqVzzgNViGDNrkQ6qHz9KrSBS4aNXvGT" }]
+    };
+    const result = classifyEnhancedTransaction(titanLike, context);
+    expect(result.trade).not.toBeNull();
+    expect(result.trade?.venueTag).toBe("TITAN");
   });
 });

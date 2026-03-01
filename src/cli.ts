@@ -1,8 +1,15 @@
 import { parseConfig, usage } from "./config";
 import { HeliusClient } from "./helius/client";
-import { EnhancedTransaction } from "./helius/types";
+import { EnhancedTransaction, HeliusWalletBalancesResponse } from "./helius/types";
+import { buildActivityLedger } from "./activities/ledger";
+import { buildBalanceSnapshot } from "./balances/snapshot";
+import { BirdeyeClient } from "./birdeye/client";
+import { buildCashflowData } from "./cashflow/classify";
 import { buildOverviewMetrics } from "./metrics/overview";
 import { buildPerformanceMetrics } from "./metrics/performance";
+import { buildStakingSummary } from "./metrics/staking";
+import { buildUnrealizedCurve } from "./metrics/unrealized";
+import { buildVenueBreakdown } from "./metrics/venue";
 import {
   ClassifyContext,
   ClassificationResult,
@@ -113,14 +120,60 @@ export async function runCli(argv: string[], env: NodeJS.ProcessEnv): Promise<vo
   });
 
   const fifo = runFifoPnl(normalizedTrades, config.usdcMint);
+  const activityLedger = buildActivityLedger(
+    Array.from(bySignature.values()),
+    recoveredTrades,
+    {
+      wallet: config.wallet,
+      goldMint: config.goldMint,
+      usdcMint: config.usdcMint,
+      oroProgramIds: new Set(config.oroProgramIds)
+    }
+  );
+  const cashflow = buildCashflowData({
+    transactions: Array.from(bySignature.values()),
+    wallet: config.wallet,
+    excludedSignatures: new Set(activityLedger.map((entry) => entry.signature))
+  });
+
+  let walletBalances: HeliusWalletBalancesResponse = {};
+  try {
+    walletBalances = await client.getWalletBalances(config.wallet);
+  } catch (error) {
+    warnings.push(`Wallet balances fetch failed: ${String(error)}`);
+  }
+  const balanceSnapshot = buildBalanceSnapshot({
+    wallet: config.wallet,
+    asOfUnix: endTimeUnix,
+    balances: walletBalances,
+    goldMint: config.goldMint,
+    usdcMint: config.usdcMint
+  });
+
   const overview = buildOverviewMetrics(normalizedTrades, fifo, config.usdcMint);
   const performance = buildPerformanceMetrics(normalizedTrades, fifo, config.usdcMint);
+  const venueBreakdown = buildVenueBreakdown(normalizedTrades, fifo, config.usdcMint);
+  const stakingSummary = buildStakingSummary(activityLedger, config.goldMint);
+  const birdeyeClient = process.env.BIRDEYE_API_KEY
+    ? new BirdeyeClient({ apiKey: process.env.BIRDEYE_API_KEY })
+    : undefined;
+  const unrealizedCurve = await buildUnrealizedCurve({
+    trades: normalizedTrades,
+    usdcMint: config.usdcMint,
+    goldMint: config.goldMint,
+    startTimeUnix,
+    endTimeUnix,
+    interval: config.unrealizedInterval,
+    birdeyeClient
+  });
+  warnings.push(...unrealizedCurve.warnings);
 
   const runMeta: RunMeta = {
     wallet: config.wallet,
     startTimeUnix,
     endTimeUnix,
     sinceDays: config.sinceDays,
+    unrealizedInterval: config.unrealizedInterval,
     fetchedTransactions: history.transactions.length,
     pagesFetched: history.pagesFetched,
     classifiedTrades: normalizedTrades.length,
@@ -132,14 +185,23 @@ export async function runCli(argv: string[], env: NodeJS.ProcessEnv): Promise<vo
 
   await writeOutputs(config.outDir, {
     normalizedTrades,
+    activityLedger,
+    balanceSnapshot,
+    cashflowLedger: cashflow.entries,
+    cashflowSummary: cashflow.summary,
     overview,
     performance,
+    venueBreakdown,
+    stakingSummary,
+    unrealizedCurve,
     runMeta
   });
 
   console.log(`Wallet: ${config.wallet}`);
   console.log(`Fetched transactions: ${history.transactions.length} across ${history.pagesFetched} page(s)`);
   console.log(`Classified GOLD trades: ${normalizedTrades.length}`);
+  console.log(`Activity ledger rows: ${activityLedger.length}`);
+  console.log(`Cashflow rows: ${cashflow.entries.length}`);
   console.log(`Output directory: ${config.outDir}`);
 }
 

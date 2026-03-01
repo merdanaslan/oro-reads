@@ -1,0 +1,22 @@
+{
+  "signature": "9qL5vD2hF8jK3mN7pR1sT4uW6xY9zA2bC5dE7fG1hJ4kL8mN2pQ6rS9tU3vW7xY1zA4bC8dE2fG5hJ9kL3mN6p",
+  "slot": 107,
+  "timestamp": 1700025200,
+  "fee": 6500,
+  "source": "ORO_STAKING",
+  "type": "STAKE",
+  "tokenTransfers": [
+    {
+      "fromUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "toUserAccount": "2hP7mR4tV9xK3sD6fG1jL5nQ8wE2zA7cB4dF9hJ3kM6p",
+      "tokenAmount": 0.0005,
+      "mint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A"
+    }
+  ],
+  "instructions": [
+    {
+      "programId": "HddmrUyzTVFuX39vyAT72XqV7C6ALa3GCUyKZeSJUHNm"
+    }
+  ],
+  "transactionError": null
+}

@@ -1,6 +1,7 @@
 import {
   EnhancedTransaction,
   FetchAddressTransactionsResult,
+  HeliusWalletBalancesResponse,
   RpcRawTransaction
 } from "./types";
 
@@ -139,6 +140,17 @@ export class HeliusClient {
     return response.result ?? null;
   }
 
+  public async getWalletBalances(wallet: string): Promise<HeliusWalletBalancesResponse> {
+    const query = new URLSearchParams({
+      "api-key": this.apiKey
+    });
+    const url = `https://api.helius.xyz/v1/wallet/${wallet}/balances?${query.toString()}`;
+    const payload = await this.requestJson<Record<string, unknown>>(url, {
+      method: "GET"
+    });
+    return unwrapWalletBalances(payload);
+  }
+
   private async requestJson<T>(url: string, init: RequestInit): Promise<T> {
     let lastError: unknown;
 
@@ -197,4 +209,12 @@ function dedupeBySignature(transactions: EnhancedTransaction[]): EnhancedTransac
     map.set(tx.signature, tx);
   }
   return Array.from(map.values());
+}
+
+function unwrapWalletBalances(payload: Record<string, unknown>): HeliusWalletBalancesResponse {
+  const maybeData = payload.data;
+  if (maybeData && typeof maybeData === "object") {
+    return maybeData as HeliusWalletBalancesResponse;
+  }
+  return payload as HeliusWalletBalancesResponse;
 }

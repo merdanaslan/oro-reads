@@ -1,0 +1,28 @@
+{
+  "signature": "7y2S9xN6apKQk5a3jQm7x9KZP4v8L2f3D5h7J9k1M2n3P4q5R6s7T8u9V1w2X3y4Z5a6B7c8D9e1F2g3H4i5J6k",
+  "slot": 105,
+  "timestamp": 1700018000,
+  "fee": 7000,
+  "source": "ORO",
+  "type": "MINT",
+  "tokenTransfers": [
+    {
+      "fromUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "toUserAccount": "7uT8vN3W6xP4Qm2R9aK5sL1dJ8fH3gB6yC2zV7nM4pR",
+      "tokenAmount": 10,
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+    },
+    {
+      "fromUserAccount": "7uT8vN3W6xP4Qm2R9aK5sL1dJ8fH3gB6yC2zV7nM4pR",
+      "toUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "tokenAmount": 0.002,
+      "mint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A"
+    }
+  ],
+  "instructions": [
+    {
+      "programId": "iNtiXEFgDNrc6FUt4cFALDe3D8RF3sVnNuKSHwxZRop"
+    }
+  ],
+  "transactionError": null
+}

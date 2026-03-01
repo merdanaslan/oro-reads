@@ -100,3 +100,28 @@ export interface FetchAddressTransactionsResult {
   transactions: EnhancedTransaction[];
   pagesFetched: number;
 }
+
+export interface HeliusWalletBalanceToken {
+  mint?: string;
+  symbol?: string | null;
+  name?: string | null;
+  amount?: number | string;
+  balance?: number | string;
+  decimals?: number;
+  tokenProgram?: string | null;
+  price?: number | null;
+  pricePerToken?: number | null;
+  totalPrice?: number | null;
+  usdValue?: number | null;
+}
+
+export interface HeliusWalletBalancesResponse {
+  nativeBalance?: number | {
+    lamports?: number;
+    amount?: number;
+  };
+  totalValueUsd?: number;
+  balances?: HeliusWalletBalanceToken[];
+  tokens?: HeliusWalletBalanceToken[];
+  tokenBalances?: HeliusWalletBalanceToken[];
+}

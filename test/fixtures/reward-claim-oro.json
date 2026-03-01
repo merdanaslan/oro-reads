@@ -1,0 +1,22 @@
+{
+  "signature": "5aK9mQ3rT7uV2wX8yZ1bC4dE6fG9hJ2kL5mN8pR1sT3uW6xY9zA2bC5dE7fG1hJ4kL8mN2pQ6rS9tU3vW7xY1zA",
+  "slot": 108,
+  "timestamp": 1700028800,
+  "fee": 6200,
+  "source": "ORO_STAKING",
+  "type": "CLAIM_REWARD",
+  "tokenTransfers": [
+    {
+      "fromUserAccount": "3vT8xN2mQ7rP4sD9fG1hJ5kL8zA2cB6dE3fH7jK4mN9p",
+      "toUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "tokenAmount": 2.5,
+      "mint": "RwdCLaimTok3n111111111111111111111111111111"
+    }
+  ],
+  "instructions": [
+    {
+      "programId": "HddmrUyzTVFuX39vyAT72XqV7C6ALa3GCUyKZeSJUHNm"
+    }
+  ],
+  "transactionError": null
+}

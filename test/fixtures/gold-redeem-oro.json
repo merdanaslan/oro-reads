@@ -1,0 +1,28 @@
+{
+  "signature": "8m4W2qP9sK3dF7hJ1lN5vB6xC2zR8tY4uI7oP3aS6dF1gH5jK9lM2nQ4rT7uV3wX8yZ1aB5cD9eF2gH6iJ3kL7m",
+  "slot": 106,
+  "timestamp": 1700021600,
+  "fee": 7100,
+  "source": "ORO",
+  "type": "REDEEM",
+  "tokenTransfers": [
+    {
+      "fromUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "toUserAccount": "5fS8hN2vQ7xK4mP9rT1yW6zD3cB8aL5jH2gF7dS1qM",
+      "tokenAmount": 0.001,
+      "mint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A"
+    },
+    {
+      "fromUserAccount": "5fS8hN2vQ7xK4mP9rT1yW6zD3cB8aL5jH2gF7dS1qM",
+      "toUserAccount": "Cm9aaToERd5g3WshAezKfEW2EgdfcB7FqC7LmTaacigQ",
+      "tokenAmount": 5,
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+    }
+  ],
+  "instructions": [
+    {
+      "programId": "HddmrUyzTVFuX39vyAT72XqV7C6ALa3GCUyKZeSJUHNm"
+    }
+  ],
+  "transactionError": null
+}

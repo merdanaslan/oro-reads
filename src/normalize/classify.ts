@@ -30,6 +30,18 @@ export function classifyEnhancedTransaction(
 ): ClassificationResult {
   const deltas = computeWalletDeltas(tx, ctx.wallet);
   const programIds = extractProgramIds(tx);
+  const swapEvidence = hasSwapEvidence(tx);
+  const goldDelta = deltas.tokenDeltas.get(ctx.goldMint) ?? 0;
+  const hasGoldDelta = Math.abs(goldDelta) > EPSILON;
+
+  if (hasExplicitNonSwapSemantics(tx) && !swapEvidence) {
+    return {
+      trade: null,
+      hasGoldDelta,
+      needsFallback: false,
+      reason: "not_trade"
+    };
+  }
 
   const trade = buildTradeFromDeltas({
     signature: tx.signature,
@@ -41,14 +53,12 @@ export function classifyEnhancedTransaction(
     status: tx.transactionError ? "FAILED" : "SUCCESS",
     deltas,
     programIds,
-    hasSwapEvidence: hasSwapEvidence(tx),
+    hasSwapEvidence: swapEvidence,
     ctx
   });
 
   if (trade === null) {
-    const goldDelta = deltas.tokenDeltas.get(ctx.goldMint) ?? 0;
-    const hasGoldDelta = Math.abs(goldDelta) > EPSILON;
-    const fallbackReason = hasGoldDelta && hasSwapEvidence(tx) ? "needs_enrichment" : "not_trade";
+    const fallbackReason = hasGoldDelta && swapEvidence ? "needs_enrichment" : "not_trade";
     return {
       trade: null,
       hasGoldDelta,
@@ -175,6 +185,14 @@ function hasSwapEvidence(tx: EnhancedTransaction): boolean {
   return swapSources.some((known) => source.includes(known));
 }
 
+function hasExplicitNonSwapSemantics(tx: EnhancedTransaction): boolean {
+  const type = (tx.type ?? "").toUpperCase();
+  const source = (tx.source ?? "").toUpperCase();
+  const haystack = `${type} ${source}`;
+  const nonSwapKeywords = ["MINT", "REDEEM", "BURN", "STAKE", "UNSTAKE", "CLAIM", "HARVEST", "REWARD"];
+  return nonSwapKeywords.some((keyword) => haystack.includes(keyword));
+}
+
 function determineValuationStatus(quoteMint: string | null, usdcMint: string): ValuationStatus {
   if (quoteMint === usdcMint) {
     return "USDC_VALUED";
@@ -199,6 +217,10 @@ function deriveVenueTag(sourceRaw: string, programIds: string[], isOroNative: bo
 
   if (source.includes("METEORA") || containsAny(programIds, METEORA_PROGRAM_IDS)) {
     return "METEORA";
+  }
+
+  if (source.includes("TITAN") || containsAny(programIds, TITAN_PROGRAM_IDS)) {
+    return "TITAN";
   }
 
   if (source === "" || source === "UNKNOWN") {
@@ -245,4 +267,8 @@ const JUPITER_PROGRAM_IDS = new Set<string>([
 ]);
 
 const METEORA_PROGRAM_IDS = new Set<string>([
+]);
+
+const TITAN_PROGRAM_IDS = new Set<string>([
+  "T1TANpTeScyeqVzzgNViGDNrkQ6qHz9KrSBS4aNXvGT"
 ]);

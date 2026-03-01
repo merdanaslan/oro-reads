@@ -1,8 +1,16 @@
 export type TradeSide = "BUY" | "SELL";
 
-export type VenueTag = "ORO_NATIVE" | "JUPITER" | "METEORA" | "OTHER" | "UNKNOWN";
+export type VenueTag = "ORO_NATIVE" | "JUPITER" | "METEORA" | "TITAN" | "OTHER" | "UNKNOWN";
 
 export type ValuationStatus = "USDC_VALUED" | "NO_USDC_LEG" | "AMBIGUOUS";
+
+export type ActivityType =
+  | "SWAP"
+  | "MINT"
+  | "REDEEM"
+  | "STAKE"
+  | "UNSTAKE"
+  | "CLAIM_REWARD";
 
 export interface NormalizedGoldTrade {
   signature: string;
@@ -90,11 +98,128 @@ export interface RunMeta {
   startTimeUnix: number;
   endTimeUnix: number;
   sinceDays: number;
+  unrealizedInterval?: string;
   fetchedTransactions: number;
   pagesFetched: number;
   classifiedTrades: number;
   ambiguousTransactions: number;
   parsedFallbackCalls: number;
   rpcFallbackCalls: number;
+  warnings: string[];
+}
+
+export interface ActivityLedgerEntry {
+  signature: string;
+  slot: number;
+  timestamp: number;
+  status: "SUCCESS" | "FAILED";
+  wallet: string;
+  activityType: ActivityType;
+  source: string;
+  type: string;
+  isOroNative: boolean;
+  programIds: string[];
+  txFeeLamports: number;
+  networkFeeSol: number;
+  goldMint: string;
+  goldDelta: number;
+  usdcMint: string;
+  usdcDelta: number;
+  side: TradeSide | null;
+  goldQty: number | null;
+  quoteMint: string | null;
+  quoteQty: number | null;
+  rewardMint: string | null;
+  rewardQty: number | null;
+}
+
+export interface StakingSummary {
+  stakeCount: number;
+  unstakeCount: number;
+  claimRewardCount: number;
+  totalStakedGold: number;
+  totalUnstakedGold: number;
+  netStakedGold: number;
+  totalClaimedRewardsByMint: Record<string, number>;
+  totalStakingFeesLamports: number;
+  totalStakingFeesSol: number;
+}
+
+export interface WalletBalanceToken {
+  mint: string;
+  symbol: string | null;
+  name: string | null;
+  balance: number;
+  decimals: number | null;
+  tokenProgram: string | null;
+  pricePerToken: number | null;
+  usdValue: number | null;
+}
+
+export interface BalanceSnapshot {
+  wallet: string;
+  asOfUnix: number;
+  totalUsdValue: number;
+  solBalance: number;
+  goldBalance: number;
+  usdcBalance: number;
+  tokens: WalletBalanceToken[];
+}
+
+export type CashflowDirection = "DEPOSIT" | "WITHDRAWAL";
+
+export interface CashflowEntry {
+  signature: string;
+  slot: number;
+  timestamp: number;
+  status: "SUCCESS" | "FAILED";
+  source: string;
+  type: string;
+  mint: string;
+  amount: number;
+  direction: CashflowDirection;
+  txFeeLamports: number;
+  networkFeeSol: number;
+}
+
+export interface CashflowSummary {
+  depositCount: number;
+  withdrawalCount: number;
+  totalDepositsByMint: Record<string, number>;
+  totalWithdrawalsByMint: Record<string, number>;
+  netByMint: Record<string, number>;
+}
+
+export interface VenueBreakdownEntry {
+  source: string;
+  tradeCount: number;
+  buyCount: number;
+  sellCount: number;
+  totalGoldVolume: number;
+  totalUsdcVolume: number;
+  totalFeesLamports: number;
+  totalFeesSol: number;
+  realizedPnlUsdc: number;
+  winningSellCount: number;
+  losingSellCount: number;
+}
+
+export interface VenueBreakdown {
+  entries: VenueBreakdownEntry[];
+}
+
+export interface UnrealizedCurvePoint {
+  period: string;
+  goldPositionQty: number;
+  usdcCash: number;
+  goldPriceUsd: number | null;
+  equityUsd: number | null;
+  drawdownPct: number | null;
+}
+
+export interface UnrealizedCurve {
+  provider: "birdeye" | "none";
+  points: UnrealizedCurvePoint[];
+  maxDrawdownPct: number | null;
   warnings: string[];
 }

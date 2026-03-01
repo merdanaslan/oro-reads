@@ -5,16 +5,9 @@
     "timestamp": 1772311469,
     "status": "SUCCESS",
     "wallet": "7orgFWEBNCsqspUTX8AZurjRfHrgRYZiswm4ewqJmH9E",
-    "side": "BUY",
-    "goldMint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A",
-    "goldQty": 0.000183,
-    "quoteMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    "quoteQty": 1,
-    "priceQuotePerGold": 5464.48087431694,
-    "txFeeLamports": 873913,
+    "activityType": "SWAP",
     "source": "TITAN",
     "type": "SWAP",
-    "venueTag": "TITAN",
     "isOroNative": false,
     "programIds": [
       "ComputeBudget111111111111111111111111111111",
@@ -27,7 +20,18 @@
       "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK",
       "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr"
     ],
-    "valuationStatus": "USDC_VALUED"
+    "txFeeLamports": 873913,
+    "networkFeeSol": 0.000873913,
+    "goldMint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A",
+    "goldDelta": 0.000183,
+    "usdcMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "usdcDelta": -1,
+    "side": "BUY",
+    "goldQty": 0.000183,
+    "quoteMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "quoteQty": 1,
+    "rewardMint": null,
+    "rewardQty": null
   },
   {
     "signature": "49FCKho5ae1cETVjGoL6xYVLf3Sx9CSPGt4XSSAHSewwz5Fb95q6xQPnEunvkMg5muoh4AuLFEitmBU1LqTYGgGb",
@@ -35,16 +39,9 @@
     "timestamp": 1772311821,
     "status": "SUCCESS",
     "wallet": "7orgFWEBNCsqspUTX8AZurjRfHrgRYZiswm4ewqJmH9E",
-    "side": "BUY",
-    "goldMint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A",
-    "goldQty": 0.000184,
-    "quoteMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    "quoteQty": 1,
-    "priceQuotePerGold": 5434.782608695652,
-    "txFeeLamports": 505000,
+    "activityType": "SWAP",
     "source": "TITAN",
     "type": "SWAP",
-    "venueTag": "TITAN",
     "isOroNative": false,
     "programIds": [
       "ComputeBudget111111111111111111111111111111",
@@ -55,7 +52,18 @@
       "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr",
       "L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95"
     ],
-    "valuationStatus": "USDC_VALUED"
+    "txFeeLamports": 505000,
+    "networkFeeSol": 0.000505,
+    "goldMint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A",
+    "goldDelta": 0.000184,
+    "usdcMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "usdcDelta": -1,
+    "side": "BUY",
+    "goldQty": 0.000184,
+    "quoteMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "quoteQty": 1,
+    "rewardMint": null,
+    "rewardQty": null
   },
   {
     "signature": "DxgaWJEfRAqiYvRv9grcvPG8zACrJAoNgLAZLUj3dnUFKAZiCmCBStHVPzJMuBunn8WF9g65EerCSfBQ7M6iGay",
@@ -63,16 +71,9 @@
     "timestamp": 1772312683,
     "status": "SUCCESS",
     "wallet": "7orgFWEBNCsqspUTX8AZurjRfHrgRYZiswm4ewqJmH9E",
-    "side": "SELL",
-    "goldMint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A",
-    "goldQty": 0.000367,
-    "quoteMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    "quoteQty": 1.966064,
-    "priceQuotePerGold": 5357.122615803815,
-    "txFeeLamports": 517758,
+    "activityType": "SWAP",
     "source": "TITAN",
     "type": "SWAP",
-    "venueTag": "TITAN",
     "isOroNative": false,
     "programIds": [
       "ComputeBudget111111111111111111111111111111",
@@ -83,6 +84,17 @@
       "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr",
       "L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95"
     ],
-    "valuationStatus": "USDC_VALUED"
+    "txFeeLamports": 517758,
+    "networkFeeSol": 0.000517758,
+    "goldMint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A",
+    "goldDelta": -0.000367,
+    "usdcMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "usdcDelta": 1.966064,
+    "side": "SELL",
+    "goldQty": 0.000367,
+    "quoteMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "quoteQty": 1.966064,
+    "rewardMint": null,
+    "rewardQty": null
   }
 ]

@@ -16,6 +16,7 @@ export interface CliConfig {
   outDir: string;
   oroProgramIds: string[];
   pageLimit: number;
+  unrealizedInterval: BirdeyeInterval;
 }
 
 interface ParsedArgs {
@@ -26,7 +27,43 @@ interface ParsedArgs {
   outDir?: string;
   oroProgramIds?: string[];
   pageLimit?: number;
+  unrealizedInterval?: BirdeyeInterval;
 }
+
+export type BirdeyeInterval =
+  | "1m"
+  | "3m"
+  | "5m"
+  | "15m"
+  | "30m"
+  | "1H"
+  | "2H"
+  | "4H"
+  | "6H"
+  | "8H"
+  | "12H"
+  | "1D"
+  | "3D"
+  | "1W"
+  | "1M";
+
+const ALLOWED_INTERVALS: Set<BirdeyeInterval> = new Set([
+  "1m",
+  "3m",
+  "5m",
+  "15m",
+  "30m",
+  "1H",
+  "2H",
+  "4H",
+  "6H",
+  "8H",
+  "12H",
+  "1D",
+  "3D",
+  "1W",
+  "1M"
+]);
 
 export function parseConfig(argv: string[], env: NodeJS.ProcessEnv): CliConfig {
   const args = parseArgs(argv);
@@ -55,6 +92,13 @@ export function parseConfig(argv: string[], env: NodeJS.ProcessEnv): CliConfig {
     throw new Error("--page-limit must be an integer in [1, 100].");
   }
 
+  const unrealizedInterval = normalizeInterval(args.unrealizedInterval ?? "1D");
+  if (!ALLOWED_INTERVALS.has(unrealizedInterval)) {
+    throw new Error(
+      `--unrealized-interval must be one of: ${Array.from(ALLOWED_INTERVALS).join(", ")}`
+    );
+  }
+
   const fromEnvPrograms = parseProgramIdList(env.ORO_PROGRAM_IDS);
   const fromArgPrograms = args.oroProgramIds ?? [];
   const mergedPrograms = dedupe([
@@ -75,7 +119,8 @@ export function parseConfig(argv: string[], env: NodeJS.ProcessEnv): CliConfig {
     sinceDays,
     outDir: args.outDir ?? "./out",
     oroProgramIds: mergedPrograms,
-    pageLimit
+    pageLimit,
+    unrealizedInterval
   };
 }
 
@@ -95,6 +140,7 @@ export function usage(): string {
     "  --oro-program-ids <csv>  Extra program IDs used for ORO-native tagging",
     "  --out-dir <path>         Default: ./out",
     "  --page-limit <n>         Default: 100",
+    "  --unrealized-interval <v> Default: 1D (Birdeye type: 1m,5m,1H,1D,...)",
     "  --help"
   ].join("\n");
 }
@@ -142,6 +188,9 @@ function parseArgs(argv: string[]): ParsedArgs {
       case "page-limit":
         parsed.pageLimit = Number(value);
         break;
+      case "unrealized-interval":
+        parsed.unrealizedInterval = normalizeInterval(value);
+        break;
       default:
         throw new Error(`Unknown option: --${key}`);
     }
@@ -171,4 +220,31 @@ function validateAddress(name: string, address: string): void {
 
 function dedupe(values: string[]): string[] {
   return Array.from(new Set(values));
+}
+
+function normalizeInterval(input: string): BirdeyeInterval {
+  const trimmed = input.trim();
+  const match = trimmed.match(/^(\d+)([a-zA-Z])$/);
+  if (!match) {
+    return trimmed as BirdeyeInterval;
+  }
+
+  const [, num, unitRaw] = match;
+  if (unitRaw === "M") {
+    return `${num}M` as BirdeyeInterval;
+  }
+  const unit = unitRaw.toLowerCase();
+  if (unit === "m") {
+    return `${num}m` as BirdeyeInterval;
+  }
+  if (unit === "h") {
+    return `${num}H` as BirdeyeInterval;
+  }
+  if (unit === "d") {
+    return `${num}D` as BirdeyeInterval;
+  }
+  if (unit === "w") {
+    return `${num}W` as BirdeyeInterval;
+  }
+  return trimmed as BirdeyeInterval;
 }

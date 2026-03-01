@@ -1,8 +1,9 @@
 {
   "wallet": "7orgFWEBNCsqspUTX8AZurjRfHrgRYZiswm4ewqJmH9E",
-  "startTimeUnix": 1771708495,
-  "endTimeUnix": 1772313295,
+  "startTimeUnix": 1771764746,
+  "endTimeUnix": 1772369546,
   "sinceDays": 7,
+  "unrealizedInterval": "1H",
   "fetchedTransactions": 10,
   "pagesFetched": 1,
   "classifiedTrades": 3,
