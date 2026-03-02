@@ -199,7 +199,7 @@ Notes:
 - Keep `--since-days` wide enough (for example `30` or `365`) so the relevant signatures are included.
 - Real claim-reward behavior is regression-tested with fixture `test/fixtures/real-oro-claim-reward.json` (signature-auditable).
 
-## Scope
+## Read Pipeline Scope
 
 In scope:
 
@@ -207,6 +207,125 @@ In scope:
 
 Out of scope:
 
-- In-app execution (milestone 4)
+- Auto-coupled writeback from swap execution into read artifacts (reads are rerun independently)
 - KYC-gated mint/redeem user execution flows
 - Pending staking rewards
+
+## Milestone 4: Standalone Blink Swap Proxy (GOLD/USDC)
+
+Milestone 4 is implemented as a separate Blink proxy service and does not write directly into the read analytics artifacts.
+
+### What It Does
+
+- Exposes Blink-compatible swap endpoints for only:
+  - `USDC -> GOLD`
+  - `GOLD -> USDC`
+- Proxies metadata and transaction payload generation to Dialect/Jupiter.
+- Enforces guardrails:
+  - mainnet only
+  - allowed pair only
+  - max notional cap (`BLINK_MAX_NOTIONAL_USD`)
+  - slippage query forwarding (`BLINK_SLIPPAGE_BPS`)
+
+### Run Blink Server
+
+Development:
+
+```bash
+npm run blink:start
+```
+
+Build + run dist:
+
+```bash
+npm run blink:start:dist
+```
+
+### App-facing Direction URLs
+
+Use this single router URL if you want one Blink entry with Buy/Sell choice:
+
+- Router:
+  - `/api/v0/swap/gold-usdc`
+
+Or use these two URLs directly in your own swap direction picker UI:
+
+- Buy (`USDC -> GOLD`):
+  - `/api/v0/swap/<USDC_MINT>-<GOLD_MINT>`
+- Sell (`GOLD -> USDC`):
+  - `/api/v0/swap/<GOLD_MINT>-<USDC_MINT>`
+
+With defaults:
+
+- `/api/v0/swap/gold-usdc`
+- `/api/v0/swap/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v-GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A`
+- `/api/v0/swap/GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A-EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`
+
+### Endpoint Contract
+
+- `GET /api/v0/swap/:tokenPair`
+  - Proxies Blink metadata and rewrites action `href` links to this proxy.
+  - Optional query: `?amount=<number>` (equivalent to fixed amount metadata).
+- `GET /api/v0/swap/gold-usdc`
+  - Returns one Blink router card with two direct transaction actions:
+    - `Buy GOLD` with required `amount` input (`?amount={amount}`)
+    - `Sell GOLD` with required `amount` input (`?amount={amount}`)
+- `GET /api/v0/swap/:tokenPair/:amount`
+  - Same as above, but fixed amount metadata.
+- `POST /api/v0/swap/:tokenPair/:amount`
+  - Body: `{ \"account\": \"<wallet_pubkey>\" }`
+  - Returns Dialect transaction payload unchanged.
+- `POST /api/v0/swap/:tokenPair?amount=<number>`
+  - Same as above; query style is supported for Blink parameterized router actions.
+
+Error payload shape:
+
+```json
+{
+  "error": {
+    "code": "INVALID_TOKEN_PAIR",
+    "message": "Unsupported tokenPair: ...",
+    "details": {}
+  }
+}
+```
+
+### Manual Blink Smoke Test
+
+1. Start server:
+
+```bash
+npm run blink:start
+```
+
+2. Fetch metadata for both directions:
+
+```bash
+curl -s http://localhost:8787/api/v0/swap/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v-GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A | jq '.links.actions'
+```
+
+```bash
+curl -s http://localhost:8787/api/v0/swap/GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A-EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v | jq '.links.actions'
+```
+
+3. Request a transaction payload:
+
+```bash
+curl -s -X POST 'http://localhost:8787/api/v0/swap/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v-GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A/10' \
+  -H 'Content-Type: application/json' \
+  -d '{\"account\":\"7orgFWEBNCsqspUTX8AZurjRfHrgRYZiswm4ewqJmH9E\"}' | jq '{type,transaction}'
+```
+
+4. Execute swap from app/wallet.
+
+5. Run the read pipeline independently to pick up swaps:
+
+```bash
+npm run start:dist -- --wallet <WALLET_PUBKEY> --gold-mint <GOLD_MINT> --since-days 365 --out-dir ./out
+```
+
+### Important Notes
+
+- Amount is treated as notional for non-SOL input tokens by Dialect swap endpoint.
+- Recent blockhash refresh happens client-side before sign/send.
+- This Blink proxy does not auto-log into read artifacts; reads remain a separate pipeline.

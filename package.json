@@ -8,6 +8,10 @@
   "scripts": {
     "start": "tsx scripts/run-wallet-read.ts",
     "start:dist": "npm run build && node dist/scripts/run-wallet-read.js",
+    "blink:start": "tsx scripts/run-blink-server.ts",
+    "blink:start:dist": "npm run build && node dist/scripts/run-blink-server.js",
+    "blink:share": "bash scripts/run-blink-share.sh",
+    "blink:share:ngrok": "bash scripts/run-blink-share-ngrok.sh",
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
     "test:watch": "vitest"

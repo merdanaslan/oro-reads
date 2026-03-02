@@ -14,7 +14,8 @@ export function buildOverviewMetrics(
 
   return {
     tradeCount: trades.length,
-    firstTradeDate: firstTradeTimestamp ? new Date(firstTradeTimestamp * 1000).toISOString() : null,
+    firstTradeDate:
+      firstTradeTimestamp !== null ? new Date(firstTradeTimestamp * 1000).toISOString() : null,
     goldVolume: sum(trades.map((trade) => trade.goldQty)),
     usdcVolume: sum(
       trades

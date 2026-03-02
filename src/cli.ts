@@ -160,8 +160,9 @@ export async function runCli(argv: string[], env: NodeJS.ProcessEnv): Promise<vo
   const performance = buildPerformanceMetrics(normalizedTrades, fifo, config.usdcMint);
   const venueBreakdown = buildVenueBreakdown(normalizedTrades, fifo, config.usdcMint);
   const stakingSummary = buildStakingSummary(activityLedger, config.goldMint);
-  const birdeyeClient = process.env.BIRDEYE_API_KEY
-    ? new BirdeyeClient({ apiKey: process.env.BIRDEYE_API_KEY })
+  const birdeyeApiKey = (env.BIRDEYE_API_KEY ?? "").trim();
+  const birdeyeClient = birdeyeApiKey
+    ? new BirdeyeClient({ apiKey: birdeyeApiKey })
     : undefined;
   const unrealizedCurve = await buildUnrealizedCurve({
     trades: normalizedTrades,
