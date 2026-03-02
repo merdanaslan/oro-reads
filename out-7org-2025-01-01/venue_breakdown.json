@@ -1,0 +1,30 @@
+{
+  "entries": [
+    {
+      "source": "TITAN",
+      "tradeCount": 3,
+      "buyCount": 2,
+      "sellCount": 1,
+      "totalGoldVolume": 0.0007340000000000001,
+      "totalUsdcVolume": 3.9660640000000003,
+      "totalFeesLamports": 1896671,
+      "totalFeesSol": 0.001896671,
+      "realizedPnlUsdc": -0.033935999999999744,
+      "winningSellCount": 0,
+      "losingSellCount": 1
+    },
+    {
+      "source": "JUPITER",
+      "tradeCount": 1,
+      "buyCount": 1,
+      "sellCount": 0,
+      "totalGoldVolume": 0.000185,
+      "totalUsdcVolume": 1.000043,
+      "totalFeesLamports": 9542,
+      "totalFeesSol": 0.000009542,
+      "realizedPnlUsdc": 0,
+      "winningSellCount": 0,
+      "losingSellCount": 0
+    }
+  ]
+}

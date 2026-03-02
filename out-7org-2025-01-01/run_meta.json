@@ -1,0 +1,14 @@
+{
+  "wallet": "7orgFWEBNCsqspUTX8AZurjRfHrgRYZiswm4ewqJmH9E",
+  "startTimeUnix": 1735768053,
+  "endTimeUnix": 1772488053,
+  "sinceDays": 425,
+  "unrealizedInterval": "1D",
+  "fetchedTransactions": 475,
+  "pagesFetched": 5,
+  "classifiedTrades": 4,
+  "ambiguousTransactions": 0,
+  "parsedFallbackCalls": 0,
+  "rpcFallbackCalls": 0,
+  "warnings": []
+}

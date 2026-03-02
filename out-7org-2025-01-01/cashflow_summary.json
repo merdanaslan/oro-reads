@@ -1,0 +1,25 @@
+{
+  "depositCount": 359,
+  "withdrawalCount": 56,
+  "totalDepositsByMint": {
+    "SOL_NATIVE": 1.2292523270000002,
+    "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN": 99,
+    "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv": 27840,
+    "SonicxvLud67EceaEzCLRnMTBqzYUUYNr93DBkBdDES": 786.66416932,
+    "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263": 7701531,
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": 3738.678312
+  },
+  "totalWithdrawalsByMint": {
+    "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN": 99,
+    "SOL_NATIVE": 0.6732659849999999,
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": 11817.569194
+  },
+  "netByMint": {
+    "SOL_NATIVE": 0.5559863420000003,
+    "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN": 0,
+    "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv": 27840,
+    "SonicxvLud67EceaEzCLRnMTBqzYUUYNr93DBkBdDES": 786.66416932,
+    "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263": 7701531,
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": -8078.890882
+  }
+}

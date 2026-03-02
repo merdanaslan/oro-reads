@@ -1,0 +1,90 @@
+{
+  "pnlOverTime": {
+    "daily": [
+      {
+        "period": "2026-02-28",
+        "realizedPnlUsdc": -0.033935999999999744
+      }
+    ],
+    "weekly": [
+      {
+        "period": "2026-W09",
+        "realizedPnlUsdc": -0.033935999999999744
+      }
+    ]
+  },
+  "avgEntryPrice": 5434.860507246377,
+  "avgExitPrice": 5357.122615803815,
+  "avgPositionSizeGold": 0.00022975000000000003,
+  "avgHoldingDurationSec": 1037.5204359673023,
+  "perTradeBreakdown": [
+    {
+      "signature": "57vrc3ADMDuSc7LRXXgYKRCrb36ok9AKppHT1BcKGuk1paLyRdtWLXSxhhiA13RhdTr5V1vimFy2jHsUqDUrCPQE",
+      "timestamp": 1772311469,
+      "side": "BUY",
+      "goldQty": 0.000183,
+      "txFeeLamports": 873913,
+      "networkFeeSol": 0.000873913,
+      "quoteMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "quoteQty": 1,
+      "priceQuotePerGold": 5464.48087431694,
+      "valuationStatus": "USDC_VALUED",
+      "venueTag": "TITAN",
+      "realizedPnlUsdc": 0,
+      "matchedQty": 0,
+      "unknownBasisQty": 0,
+      "holdingDurationSec": null
+    },
+    {
+      "signature": "49FCKho5ae1cETVjGoL6xYVLf3Sx9CSPGt4XSSAHSewwz5Fb95q6xQPnEunvkMg5muoh4AuLFEitmBU1LqTYGgGb",
+      "timestamp": 1772311821,
+      "side": "BUY",
+      "goldQty": 0.000184,
+      "txFeeLamports": 505000,
+      "networkFeeSol": 0.000505,
+      "quoteMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "quoteQty": 1,
+      "priceQuotePerGold": 5434.782608695652,
+      "valuationStatus": "USDC_VALUED",
+      "venueTag": "TITAN",
+      "realizedPnlUsdc": 0,
+      "matchedQty": 0,
+      "unknownBasisQty": 0,
+      "holdingDurationSec": null
+    },
+    {
+      "signature": "DxgaWJEfRAqiYvRv9grcvPG8zACrJAoNgLAZLUj3dnUFKAZiCmCBStHVPzJMuBunn8WF9g65EerCSfBQ7M6iGay",
+      "timestamp": 1772312683,
+      "side": "SELL",
+      "goldQty": 0.000367,
+      "txFeeLamports": 517758,
+      "networkFeeSol": 0.000517758,
+      "quoteMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "quoteQty": 1.966064,
+      "priceQuotePerGold": 5357.122615803815,
+      "valuationStatus": "USDC_VALUED",
+      "venueTag": "TITAN",
+      "realizedPnlUsdc": -0.033935999999999744,
+      "matchedQty": 0.000367,
+      "unknownBasisQty": 0,
+      "holdingDurationSec": 1037.5204359673023
+    },
+    {
+      "signature": "3JBGk34GUU4uNgzWtdMiL5A2j9cWMvrwg5rYMGuNCYupv5vatwsLeBqgZvMdsirPAsRWV7pyUFJm6HaxRLunoy56",
+      "timestamp": 1772401009,
+      "side": "BUY",
+      "goldQty": 0.000185,
+      "txFeeLamports": 9542,
+      "networkFeeSol": 0.000009542,
+      "quoteMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "quoteQty": 1.000043,
+      "priceQuotePerGold": 5405.637837837838,
+      "valuationStatus": "USDC_VALUED",
+      "venueTag": "JUPITER",
+      "realizedPnlUsdc": 0,
+      "matchedQty": 0,
+      "unknownBasisQty": 0,
+      "holdingDurationSec": null
+    }
+  ]
+}
